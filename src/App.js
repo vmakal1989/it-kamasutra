@@ -3,6 +3,7 @@ import './App.css';
 import Header from './components/Header';
 import Navbar from './components/Navbar';
 import Profile from './components/Profile';
+import UserMenu from './components/UserMenu';
 
 const App = () => {
   return (
@@ -10,6 +11,7 @@ const App = () => {
       <Header/>
       <Navbar/>
       <Profile/>
+      <UserMenu/>
     </div>
   );
 }

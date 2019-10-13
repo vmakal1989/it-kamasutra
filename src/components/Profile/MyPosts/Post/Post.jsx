@@ -1,18 +1,14 @@
 import React from 'react';
 import style from './Post.module.css';
 
-const Post = () => {
+const Post = (props) => {
   return (
-    <div className={style.post}>
+    <div className='post'>
       <div className={style.item}>
-        Post 1
+        <img src='https://cdn.dribbble.com/users/199982/screenshots/4044699/furkan-avatar-dribbble.png'/>
+        {props.message}
       </div>
-      <div className={style.item}>
-        Post 2
-      </div>
-      <div className={style.item}>
-        Post 3
-      </div>
+      <div>like {props.likes_counts}</div>
     </div>
   )
     }

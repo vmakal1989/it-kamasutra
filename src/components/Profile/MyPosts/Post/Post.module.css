@@ -1,3 +1,11 @@
+.post {
+  margin: 10px;
+}
 .item {
     color:peru
   }
+
+.item img {
+  border-radius: 25px;
+  width: 50px;
+}

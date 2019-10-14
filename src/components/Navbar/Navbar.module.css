@@ -3,7 +3,11 @@
   background:#424242;
   border-radius: 5px;
   margin: 9px;
-  padding: 0 25px 20px;
+  padding: 20px;
+}
+
+.item {
+  padding: 5px;
 }
 
 .item a {
@@ -16,4 +20,8 @@
 
 .item a:hover {
   color: deepskyblue;
+}
+
+.item a.active {
+  color: gold;
 }

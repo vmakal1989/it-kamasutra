@@ -1,8 +1,27 @@
-.body {
-    grid-area: c;
+.dialogsBody {
+    display: grid;
+    grid-template-columns: 220px 540px;
+
     background: #505050;
     padding: 25px;
     margin: 9px;
     border-radius: 5px;
-    display: flex;
+
+}
+
+.dialogs {
+    background: #424242;
+    border-radius: 5px;
+    margin: -25px 9px 9px 0;
+    padding: 10px;
+    color: #eee;
+    font-size: 18px;
+    font-weight: 400;
+    text-transform: capitalize;
+}
+.comments {
+    background: #424242;
+    border-radius: 5px;
+    margin: -25px 0 9px 9px;
+    padding: 10px;
 }

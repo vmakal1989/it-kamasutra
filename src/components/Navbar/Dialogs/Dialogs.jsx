@@ -3,11 +3,19 @@ import style from './Dialogs.module.css';
 
 const Dialogs = () => {
     return (
-        <div className={style.body}>
-            <div>
-              Hello
+        <div className={style.dialogsBody}>
+            <div className={style.dialogs}>
+                <div>
+                  Artur
+                </div>
+                <div>
+                    Valera
+                </div>
+                <div>
+                    Kris
+                </div>
             </div>
-            <div>
+            <div className={style.comments}>
               Messages
             </div>
         </div>

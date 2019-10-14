@@ -5,9 +5,15 @@
   margin: 9px;
   padding: 0 25px 20px;
 }
-.item {
-  color:white;
+
+.item a {
+  color: #eee;
+  font-size: 18px;
+  font-weight: 400;
+  text-transform: capitalize;
+  text-decoration: none;
 }
-.item:hover {
-  color:red;
+
+.item a:hover {
+  color: deepskyblue;
 }

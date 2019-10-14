@@ -1,0 +1,8 @@
+.body {
+    grid-area: c;
+    background: #505050;
+    padding: 25px;
+    margin: 9px;
+    border-radius: 5px;
+    display: flex;
+}

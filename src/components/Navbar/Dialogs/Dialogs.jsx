@@ -3,8 +3,13 @@ import style from './Dialogs.module.css';
 
 const Dialogs = () => {
     return (
-        <div>
-            Hello
+        <div className={style.body}>
+            <div>
+              Hello
+            </div>
+            <div>
+              Messages
+            </div>
         </div>
     )
 }

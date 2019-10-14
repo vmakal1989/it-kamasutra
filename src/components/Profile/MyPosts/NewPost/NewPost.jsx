@@ -5,6 +5,7 @@ const NewPost = () => {
   return (
     <div className={style.newpost}>
       New post
+      <textarea></textarea>
     </div>
   )
     }

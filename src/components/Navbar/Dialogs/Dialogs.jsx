@@ -22,18 +22,32 @@ const MessagesUser = (props) => {
     )
 }
 const Dialogs = () => {
+
+    let dialogsDate = [
+        {name: 'Vitali', id: '1'},
+        {name: 'Slava', id: '2'},
+        {name: 'Valera', id: '3'},
+        {name: 'Kristina', id: '4'}
+    ]
+
+    let messagesDate = [
+        {messages: 'Hello My friend!'},
+        {messages: 'I follow  for my dreams'},
+        {messages: 'And they will be mine'},
+    ]
+
     return (
         <div className={style.dialogsBody}>
             <div>
-                <DialogsUser name='Vitali' id='1' />
-                <DialogsUser name='Slava' id='2' />
-                <DialogsUser name='Valera' id='3' />
-                <DialogsUser name='Kristina' id='4' />
+                <DialogsUser name={dialogsDate[0].name} id={dialogsDate[0].id} />
+                <DialogsUser name={dialogsDate[1].name} id={dialogsDate[1].id} />
+                <DialogsUser name={dialogsDate[2].name} id={dialogsDate[2].id} />
+                <DialogsUser name={dialogsDate[3].name} id={dialogsDate[3].id} />
             </div>
             <div className={style.comments}>
-                <MessagesUser messages='Hello My friend!' />
-                <MessagesUser messages='I follow  for my dreams!' />
-                <MessagesUser messages='And they will be mine!' />
+                <MessagesUser messages={messagesDate[0].messages} />
+                <MessagesUser messages={messagesDate[1].messages} />
+                <MessagesUser messages={messagesDate[2].messages} />
             </div>
         </div>
     )

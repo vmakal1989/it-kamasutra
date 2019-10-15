@@ -1,27 +1,40 @@
 .dialogsBody {
     display: grid;
-    grid-template-columns: 220px 540px;
+    grid-template-columns: 300px 510px;
 
     background: #505050;
-    padding: 25px;
-    margin: 9px;
     border-radius: 5px;
-
 }
 
 .dialogs {
     background: #424242;
     border-radius: 5px;
-    margin: -25px 9px 9px 0;
-    padding: 10px;
     color: #eee;
     font-size: 18px;
     font-weight: 400;
     text-transform: capitalize;
+    margin: 9px 9px 9px 18px;
+    padding: 10px;
+}
+
+.dialogs a {
+    color: #eee;
+    font-size: 18px;
+    font-weight: 400;
+    text-transform: capitalize;
+    text-decoration: none;
+}
+
+.dialogs a:hover  {
+    color: deepskyblue;
+}
+
+.dialogs a.active {
+    color:gold;
 }
 .comments {
     background: #424242;
     border-radius: 5px;
-    margin: -25px 0 9px 9px;
+    margin: 9px;
     padding: 10px;
 }

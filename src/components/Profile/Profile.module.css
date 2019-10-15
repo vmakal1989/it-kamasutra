@@ -1,11 +1,7 @@
-.content {
-  grid-area: c;
-  background: #505050;
-  padding: 25px;
-  margin-top: 9px;
+.menu {
+  grid-area: u;
+  background:#424242;
   border-radius: 5px;
-}
-
-.content img {
-  width: 100%;
+  margin-top: 9px;
+  padding: 0 25px 20px;
 }

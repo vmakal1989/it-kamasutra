@@ -4,16 +4,18 @@ import Post from './Post/Post';
 
 const MyPosts = () => {
 
-    let postsDate = [
+    let posts = [
         {message: 'Hello, I am Vitali!', likes_counts: '40', image: 'http://we.com.mk/wp-content/uploads/2016/12/greece-islands.jpg'},
         {message:'It is my first day programing on React!', likes_counts: 56}
     ]
+
+    let postsElements = posts.map ( p => <Post message={p.message}  likes_counts={p.likes_counts} image={p.image} />);
+
   return (
     <div className={style.content}>
       <div>
         <div>
-            <Post message={ postsDate[0].message} like_counts={postsDate[0].likes_counts} image={postsDate[0].image}/>
-            <Post message={ postsDate[1].message} like_counts={postsDate[1].likes_counts}/>
+            {postsElements}
         </div>
       </div>
     </div>

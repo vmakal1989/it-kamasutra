@@ -5,7 +5,7 @@ import {NavLink} from "react-router-dom";
 
 const DialogsUser = (props) => {
 
-    let path = '/dialogs/id' + props.id;
+    let path = '/dialogs/' + props.id;
 
     return (
         <div className={style.dialogs}>
@@ -23,31 +23,29 @@ const MessagesUser = (props) => {
 }
 const Dialogs = () => {
 
-    let dialogsDate = [
+    let dialogs = [
         {name: 'Vitali', id: '1'},
         {name: 'Slava', id: '2'},
         {name: 'Valera', id: '3'},
         {name: 'Kristina', id: '4'}
-    ]
+    ];
 
-    let messagesDate = [
+    let messages = [
         {messages: 'Hello My friend!'},
         {messages: 'I follow  for my dreams'},
         {messages: 'And they will be mine'},
-    ]
+    ];
+
+    let dialogsElement = dialogs.map( d => <DialogsUser name={d.name} id={d.id} /> );
+    let messagesElement = messages.map( m => <MessagesUser messages={m.messages} />);
 
     return (
         <div className={style.dialogsBody}>
             <div>
-                <DialogsUser name={dialogsDate[0].name} id={dialogsDate[0].id} />
-                <DialogsUser name={dialogsDate[1].name} id={dialogsDate[1].id} />
-                <DialogsUser name={dialogsDate[2].name} id={dialogsDate[2].id} />
-                <DialogsUser name={dialogsDate[3].name} id={dialogsDate[3].id} />
+                {dialogsElement}
             </div>
             <div className={style.comments}>
-                <MessagesUser messages={messagesDate[0].messages} />
-                <MessagesUser messages={messagesDate[1].messages} />
-                <MessagesUser messages={messagesDate[2].messages} />
+                {messagesElement}
             </div>
         </div>
     )

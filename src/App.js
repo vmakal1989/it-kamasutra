@@ -12,23 +12,23 @@ import Settings from "./components/Navbar/Settings/Settings";
 
 
 const App = () => {
-  return (
-      <BrowserRouter>
-        <div className="app-wrapper">
-          <Header />
-          <Navbar />
-          <div>
-              <Route path='/' exact component={PageContents}/>
-              <Route path='/profile' component={PageContents}/>
-              <Route path='/dialogs' component={Dialogs}/>
-              <Route path='/news' component={News}/>
-              <Route path='/music' component={Music}/>
-              <Route path='/settings' component={Settings}/>
-          </div>
-          <Profile />
-        </div>
-      </BrowserRouter>
-  );
+    return (
+        <BrowserRouter>
+            <div className="app-wrapper">
+                <Header/>
+                <Navbar/>
+                <div>
+                    <Route path='/' exact component={PageContents}/>
+                    <Route path='/profile' component={PageContents}/>
+                    <Route path='/dialogs' component={Dialogs}/>
+                    <Route path='/news' component={News}/>
+                    <Route path='/music' component={Music}/>
+                    <Route path='/settings' component={Settings}/>
+                </div>
+                <Profile/>
+            </div>
+        </BrowserRouter>
+    );
 }
 
 

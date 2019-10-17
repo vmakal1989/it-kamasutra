@@ -1,9 +1,37 @@
 .nav {
   grid-area: n;
-  background:#424242;
+  background:#505050;
+}
+
+.navUp {
+  background: #424242;
+  margin: 9px 0 15px 0;
   border-radius: 5px;
-  margin: 9px 0 0 0;
   padding: 20px;
+ }
+
+.blockImage {
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  padding:10px;
+}
+
+.navDown {
+  background: #424242;
+  margin-top: 15px;
+  border-radius: 5px;
+  padding: 5px;
+}
+.navDown img {
+  width: 90px;
+  height: 90px;
+  border-radius: 15px;
+}
+
+.navDown h3 {
+  text-align: center;
+  font-size: 16px;
+  color: #007bff;
 }
 
 .item {

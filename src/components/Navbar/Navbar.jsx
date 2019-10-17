@@ -1,26 +1,22 @@
 import React from 'react';
 import style from './Navbar.module.css';
-import {NavLink} from "react-router-dom";
+import TopFriends from './TopFriends/TopFriends';
+import LinksMenu from './LinksMenu/linksMenu';
 
-const Navbar = () => {
+const Navbar = (props) => {
+
+    let topFriends = props.topFriends.friends.map( f => <TopFriends image={f.image}/>);
+
     return (
-      <nav className={style.nav}>
-        <div className={style.item}>
-          <NavLink to='/myPage' activeClassName={style.active}>My Page</NavLink>
-        </div>
-        <div className={style.item}>
-          <NavLink to='/dialogs' activeClassName={style.active}>Messages</NavLink>
-        </div>
-        <div className={style.item}>
-          <NavLink to='/news' activeClassName={style.active}>News</NavLink>
-        </div>
-        <div className={style.item}>
-          <NavLink to='/music' activeClassName={style.active}>Music</NavLink>
-        </div>
-        <div className={style.item}>
-          <NavLink to='/settings' activeClassName={style.active}>Settings</NavLink>
-        </div>
-      </nav>
+        <nav className={style.nav}>
+            <LinksMenu />
+            <div className={style.navDown}>
+                <h3>Top Friends</h3>
+                <div className={style.blockImage}>
+                    {topFriends}
+                </div>
+            </div>
+        </nav>
     )
 }
 

@@ -3,13 +3,13 @@ import style from './PageContents.module.css';
 import MyPosts from './MyPosts/MyPosts';
 import NewPost from './MyPosts/NewPost/NewPost';
 
-const PageContents = () => {
+const PageContents = (props) => {
   return (
     <div className={style.content}>
       <NewPost />
       <div>
         <div>
-          <MyPosts />
+          <MyPosts posts={props.posts}/>
         </div>
       </div>
     </div>  

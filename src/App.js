@@ -10,17 +10,17 @@ import News from "./components/Navbar/News/News";
 import Music from "./components/Navbar/Music/Music";
 import Settings from "./components/Navbar/Settings/Settings";
 
-
-const App = () => {
+const App = (props) => {
     return (
         <BrowserRouter>
             <div className="app-wrapper">
                 <Header/>
                 <Navbar/>
                 <div>
-                    <Route path='/' exact component={PageContents}/>
-                    <Route path='/profile' component={PageContents}/>
-                    <Route path='/dialogs' component={Dialogs}/>
+                    <Route path='/' exact render={ () => <PageContents posts={props.posts}/>}/>
+                    <Route path='/myPage' exact render={ () => <PageContents posts={props.posts}/>}/>
+                    <Route path='/dialogs' render={ () => <Dialogs dateDialogs={props.dateDialogs}
+                                                                   dateMessages={props.dateMessages}/>} />
                     <Route path='/news' component={News}/>
                     <Route path='/music' component={Music}/>
                     <Route path='/settings' component={Settings}/>

@@ -3,8 +3,7 @@ let state = {
         dialogs: [
             {name: 'Vitali', id: '1'},
             {name: 'Slava', id: '2'},
-            {name: 'Valera', id: '3'},
-            {name: 'Kristina', id: '4'}
+            {name: 'Valera', id: '3'}
         ],
         messages: [
             {message: 'Hello My friend!'},

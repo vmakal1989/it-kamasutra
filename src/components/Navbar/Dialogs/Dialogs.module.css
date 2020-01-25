@@ -38,3 +38,21 @@
     margin: 9px;
     padding: 10px;
 }
+
+.sendMessage {
+    background: #343434;
+    border-radius: 5px;
+    margin: 0px -9px -9px -9px;
+    padding: 10px;
+}
+.sendMessage textarea {
+    border-radius: 5px;
+    padding: 10px;
+    width: 450px;
+    height: 28px
+}
+
+.sendMessage button {
+    border-radius: 5px;
+}
+

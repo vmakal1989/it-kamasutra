@@ -3,7 +3,7 @@ import style from './../Dialogs.module.css';
 import {NavLink} from "react-router-dom";
 
 
-const DialogsUser = (props) => {
+const DialogUser = (props) => {
 
     let path = '/dialogs/' + props.id;
 
@@ -15,4 +15,4 @@ const DialogsUser = (props) => {
 }
 
 
-export default DialogsUser;
+export default DialogUser;

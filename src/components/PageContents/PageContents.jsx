@@ -6,7 +6,7 @@ import NewPost from './MyPosts/NewPost/NewPost';
 const PageContents = (props) => {
   return (
     <div className={style.content}>
-      <NewPost />
+      <NewPost addPost={props.addPost}/>
       <div>
         <div>
           <MyPosts posts={props.posts}/>

@@ -13,8 +13,8 @@ let state = {
     },
     pageContents: {
         posts: [
-            {message: 'Hello, I am Vitali!', likes_counts: '40', image: 'http://we.com.mk/wp-content/uploads/2016/12/greece-islands.jpg'},
-            {message:'It is my first day programing on React!', likes_counts: 56}
+            {id: '1', message: 'Hello, I am Vitali!', likes_counts: '40', image: 'http://we.com.mk/wp-content/uploads/2016/12/greece-islands.jpg'},
+            {id: '2', message:'It is my first day programing on React!', likes_counts: 56}
         ]
     },
 
@@ -27,6 +27,11 @@ let state = {
         ]
     }
 
+};
+
+export let addPost = (addPost) => {
+
+    state.pageContents.posts.push(addPost);
 };
 
 export default state;

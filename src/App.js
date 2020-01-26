@@ -17,7 +17,8 @@ const App = (props) => {
                 <Navbar topFriends={props.state.topFriends}/>
                 <div>
                     <Route path='/' exact render={ () => <PageContents posts={props.state.pageContents.posts}/>}/>
-                    <Route path='/myPage' exact render={ () => <PageContents posts={props.state.pageContents.posts}/>}/>
+                    <Route path='/myPage' exact render={ () => <PageContents posts={props.state.pageContents.posts}
+                                                                             addPost={props.addPost}/>}/>
                     <Route path='/dialogs' render={ () => <Dialogs dateDialogs={props.state.dialogsElements}/>} />
                     <Route path='/news' component={News}/>
                     <Route path='/music' component={Music}/>

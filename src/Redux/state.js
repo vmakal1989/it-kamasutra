@@ -1,3 +1,5 @@
+import {rerenderEntireTree} from "../render";
+
 let state = {
     dialogsElements: {
         dialogs: [
@@ -31,7 +33,14 @@ let state = {
 
 export let addPost = (addPost) => {
 
-    state.pageContents.posts.push(addPost);
+    let post = {
+        id: 5,
+        message: addPost,
+        likes_counts: 0
+    };
+
+    state.pageContents.posts.push(post);
+    rerenderEntireTree(state);
 };
 
 export default state;

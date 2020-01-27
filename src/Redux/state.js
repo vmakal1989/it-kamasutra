@@ -17,7 +17,8 @@ let state = {
         posts: [
             {id: '1', message: 'Hello, I am Vitali!', likes_counts: '40', image: 'http://we.com.mk/wp-content/uploads/2016/12/greece-islands.jpg'},
             {id: '2', message:'It is my first day programing on React!', likes_counts: 56}
-        ]
+        ],
+        newPostText: 'It world'
     },
 
     topFriends: {
@@ -31,15 +32,20 @@ let state = {
 
 };
 
-export let addPost = (addPost) => {
+export let addPost = () => {
 
     let post = {
         id: 5,
-        message: addPost,
+        message: state.pageContents.newPostText,
         likes_counts: 0
     };
 
     state.pageContents.posts.push(post);
+    rerenderEntireTree(state);
+};
+
+export let updateNewPostText = (newText) => {
+    state.pageContents.newPostText = newText;
     rerenderEntireTree(state);
 };
 

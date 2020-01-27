@@ -6,7 +6,7 @@ const LinksMenu = () => {
     return (
         <div className={style.navUp}>
             <div className={style.item}>
-                <NavLink to='/myPage' activeClassName={style.active}>My Page</NavLink>
+                <NavLink to='/' activeClassName={style.active}>My Page</NavLink>
             </div>
             <div className={style.item}>
                 <NavLink to='/dialogs' activeClassName={style.active}>Messages</NavLink>

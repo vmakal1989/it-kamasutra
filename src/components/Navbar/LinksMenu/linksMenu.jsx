@@ -3,10 +3,11 @@ import style from '../Navbar.module.css';
 import {NavLink} from "react-router-dom";
 
 const LinksMenu = () => {
+
     return (
         <div className={style.navUp}>
             <div className={style.item}>
-                <NavLink to='/' activeClassName={style.active}>My Page</NavLink>
+                <NavLink to='/'>My Page</NavLink>
             </div>
             <div className={style.item}>
                 <NavLink to='/dialogs' activeClassName={style.active}>Messages</NavLink>

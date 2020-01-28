@@ -1,5 +1,6 @@
-import {rerenderEntireTree} from "../render";
+let rerenderEntireTree = () => {
 
+};
 let state = {
     dialogsElements: {
         dialogs: [
@@ -34,7 +35,7 @@ let state = {
 
 };
 
-export let addPost = () => {
+export const addPost = () => {
 
     let post = {
         id: 5,
@@ -46,12 +47,12 @@ export let addPost = () => {
     rerenderEntireTree(state);
 };
 
-export let updateNewPostText = (newText) => {
+export const updateNewPostText = (newText) => {
     state.pageContents.newPostText = newText;
     rerenderEntireTree(state);
 };
 
-export let addMessage = () => {
+export const addMessage = () => {
 
     let message = {
         message: state.dialogsElements.newMessageText
@@ -62,10 +63,14 @@ export let addMessage = () => {
     rerenderEntireTree(state);
 };
 
-export let updateNewMessageText = (newText) => {
+export const updateNewMessageText = (newText) => {
 
     state.dialogsElements.newMessageText = newText;
     rerenderEntireTree(state);
+};
+
+export let subscribe = (observer) => {
+    rerenderEntireTree = observer;
 };
 
 export default state;

@@ -11,7 +11,9 @@ let state = {
             {message: 'Hello My friend!'},
             {message: 'I follow  for my dreams'},
             {message: 'And they will be mine'},
-        ]
+        ],
+
+        newMessageText: "hello"
     },
     pageContents: {
         posts: [
@@ -46,6 +48,23 @@ export let addPost = () => {
 
 export let updateNewPostText = (newText) => {
     state.pageContents.newPostText = newText;
+    rerenderEntireTree(state);
+};
+
+export let addMessage = () => {
+
+    let message = {
+        message: state.dialogsElements.newMessageText
+    };
+
+    state.dialogsElements.messages.push(message);
+    state.dialogsElements.newMessageText = '';
+    rerenderEntireTree(state);
+};
+
+export let updateNewMessageText = (newText) => {
+
+    state.dialogsElements.newMessageText = newText;
     rerenderEntireTree(state);
 };
 

@@ -8,13 +8,19 @@ const Dialogs = (props) => {
     let newMessageElement = React.createRef();
 
     let addMessage = () => {
-       let message = newMessageElement.current.value;
-       alert(message);
+       props.addMessage();
+    };
 
-    }
+    let onChangeMessage = () => {
+        let newMessageText = newMessageElement.current.value;
+        props.updateNewMessageText(newMessageText);
+    };
+
 
     let dialogsElement = props.dateDialogs.dialogs.map( d => <DialogUser name={d.name} id={d.id} /> );
     let messagesElement = props.dateDialogs.messages.map( m => <MessagesUser messages={m.message} />);
+
+
 
     return (
         <div className={style.dialogsBody}>
@@ -26,7 +32,10 @@ const Dialogs = (props) => {
                     {messagesElement}
                 </div>
                 <div className={style.sendMessage}>
-                    <textarea ref={newMessageElement}></textarea>
+                    <textarea ref={newMessageElement}
+                              onChange={onChangeMessage}
+                              value={props.newMessageText}
+                              />
                     <div>
                         <button onClick={addMessage}>Send</button>
                     </div>

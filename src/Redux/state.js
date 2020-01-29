@@ -1,76 +1,76 @@
 let rerenderEntireTree = () => {
 
 };
-let state = {
-    dialogsElements: {
-        dialogs: [
-            {name: 'Vitali', id: '1'},
-            {name: 'Slava', id: '2'},
-            {name: 'Valera', id: '3'}
-        ],
-        messages: [
-            {message: 'Hello My friend!'},
-            {message: 'I follow  for my dreams'},
-            {message: 'And they will be mine'},
-        ],
+export const store = {
+    state: {
+        dialogsElements: {
+            dialogs: [
+                {name: 'Vitali', id: '1'},
+                {name: 'Slava', id: '2'},
+                {name: 'Valera', id: '3'}
+            ],
+            messages: [
+                {message: 'Hello My friend!'},
+                {message: 'I follow  for my dreams'},
+                {message: 'And they will be mine'},
+            ],
 
-        newMessageText: "hello"
-    },
-    pageContents: {
-        posts: [
-            {id: '1', message: 'Hello, I am Vitali!', likes_counts: '40', image: 'http://we.com.mk/wp-content/uploads/2016/12/greece-islands.jpg'},
-            {id: '2', message:'It is my first day programing on React!', likes_counts: 56}
-        ],
-        newPostText: 'It world'
+            newMessageText: "hello"
+        },
+        pageContents: {
+            posts: [
+                {id: '1', message: 'Hello, I am Vitali!', likes_counts: '40', image: 'http://we.com.mk/wp-content/uploads/2016/12/greece-islands.jpg'},
+                {id: '2', message:'It is my first day programing on React!', likes_counts: 56}
+            ],
+            newPostText: 'It world'
+        },
+
+        topFriends: {
+            friends: [
+                {name: 'Slava', image: 'https://whatsism.com/uploads/posts/2018-07/1530544023_n6fgwzftnvg.jpg'},
+                {name: 'Vitali', image: 'http://gloria-mur.ru/wp-content/uploads/2017/05/avatar1-740x463.jpg'},
+                {name: 'Kristina', image: 'http://cdn01.ru/files/users/images/32/c4/32c4cb047498da9301d64986ee0a646b.jpeg'},
+                {name: 'Slava', image: 'https://cs4.pikabu.ru/post_img/big/2015/09/12/8/1442062158_1123103519.jpg'}
+            ]
+        }
+
     },
 
-    topFriends: {
-        friends: [
-            {name: 'Slava', image: 'https://whatsism.com/uploads/posts/2018-07/1530544023_n6fgwzftnvg.jpg'},
-            {name: 'Vitali', image: 'http://gloria-mur.ru/wp-content/uploads/2017/05/avatar1-740x463.jpg'},
-            {name: 'Kristina', image: 'http://cdn01.ru/files/users/images/32/c4/32c4cb047498da9301d64986ee0a646b.jpeg'},
-            {name: 'Slava', image: 'https://cs4.pikabu.ru/post_img/big/2015/09/12/8/1442062158_1123103519.jpg'}
-        ]
+    addPost: () => {
+
+        let post = {
+            id: 5,
+            message: store.state.pageContents.newPostText,
+            likes_counts: 0
+        };
+
+        store.state.pageContents.posts.push(post);
+        rerenderEntireTree(store);
+    },
+
+    updateNewPostText: (newText) => {
+        store.state.pageContents.newPostText = newText;
+        rerenderEntireTree(store);
+    },
+
+    addMessage: () => {
+
+        let message = {
+            message: store.state.dialogsElements.newMessageText
+        };
+
+        store.state.dialogsElements.messages.push(message);
+        store.state.dialogsElements.newMessageText = '';
+        rerenderEntireTree(store);
+    },
+
+    updateNewMessageText: (newText) => {
+
+        store.state.dialogsElements.newMessageText = newText;
+        rerenderEntireTree(store);
     }
-
-};
-
-export const addPost = () => {
-
-    let post = {
-        id: 5,
-        message: state.pageContents.newPostText,
-        likes_counts: 0
-    };
-
-    state.pageContents.posts.push(post);
-    rerenderEntireTree(state);
-};
-
-export const updateNewPostText = (newText) => {
-    state.pageContents.newPostText = newText;
-    rerenderEntireTree(state);
-};
-
-export const addMessage = () => {
-
-    let message = {
-        message: state.dialogsElements.newMessageText
-    };
-
-    state.dialogsElements.messages.push(message);
-    state.dialogsElements.newMessageText = '';
-    rerenderEntireTree(state);
-};
-
-export const updateNewMessageText = (newText) => {
-
-    state.dialogsElements.newMessageText = newText;
-    rerenderEntireTree(state);
 };
 
 export let subscribe = (observer) => {
     rerenderEntireTree = observer;
 };
-
-export default state;

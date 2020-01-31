@@ -8,17 +8,17 @@ import {BrowserRouter} from "react-router-dom";
 
 let rerenderEntireTree = (store) => {
     ReactDOM.render(<BrowserRouter>
-        <App state={store.state}
-             addPost={store.addPost}
-             updateNewPostText={store.updateNewPostText}
-             addMessage={store.addMessage}
-             updateNewMessageText={store.updateNewMessageText}/>
+        <App state={store.getState()}
+             addPost={store.addPost.bind(store)}
+             updateNewPostText={store.updateNewPostText.bind(store)}
+             addMessage={store.addMessage.bind(store)}
+             updateNewMessageText={store.updateNewMessageText.bind(store)}/>
     </BrowserRouter>, document.getElementById('root'));
 }
 
 rerenderEntireTree(store);
 
-subscribe(rerenderEntireTree);
+store.subscribe(rerenderEntireTree);
 
 
 

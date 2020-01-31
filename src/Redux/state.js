@@ -1,8 +1,5 @@
-let rerenderEntireTree = () => {
-
-};
 export const store = {
-    state: {
+    _state: {
         dialogsElements: {
             dialogs: [
                 {name: 'Vitali', id: '1'},
@@ -36,41 +33,48 @@ export const store = {
 
     },
 
-    addPost: () => {
+    getState() {
+        return this._state
+    },
 
+    rerenderEntireTree() {
+    },
+
+    subscribe(observer) {
+        this.rerenderEntireTree = observer;
+    },
+
+    addPost() {
+        debugger;
         let post = {
             id: 5,
-            message: store.state.pageContents.newPostText,
+            message: this._state.pageContents.newPostText,
             likes_counts: 0
         };
 
-        store.state.pageContents.posts.push(post);
-        rerenderEntireTree(store);
+        this._state.pageContents.posts.push(post);
+        this.rerenderEntireTree(store);
     },
 
-    updateNewPostText: (newText) => {
-        store.state.pageContents.newPostText = newText;
-        rerenderEntireTree(store);
+    updateNewPostText(newText) {
+        this._state.pageContents.newPostText = newText;
+        this.rerenderEntireTree(store);
     },
 
-    addMessage: () => {
+    addMessage() {
 
         let message = {
-            message: store.state.dialogsElements.newMessageText
+            message: this._state.dialogsElements.newMessageText
         };
 
-        store.state.dialogsElements.messages.push(message);
-        store.state.dialogsElements.newMessageText = '';
-        rerenderEntireTree(store);
+        this._state.dialogsElements.messages.push(message);
+        this._state.dialogsElements.newMessageText = '';
+        this.rerenderEntireTree(store);
     },
 
-    updateNewMessageText: (newText) => {
+    updateNewMessageText(newText) {
 
-        store.state.dialogsElements.newMessageText = newText;
-        rerenderEntireTree(store);
+        this._state.dialogsElements.newMessageText = newText;
+        this.rerenderEntireTree(store);
     }
-};
-
-export let subscribe = (observer) => {
-    rerenderEntireTree = observer;
 };

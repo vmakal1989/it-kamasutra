@@ -17,13 +17,11 @@ const App = (props) => {
                 <Navbar topFriends={props.state.topFriends}/>
                 <div>
                     <Route path='/' exact render={ () => <PageContents posts={props.state.pageContents.posts}
-                                                                       addPost={props.addPost}
-                                                                       newPostText = {props.state.pageContents.newPostText}
-                                                                       updateNewPostText={props.updateNewPostText} />}/>
+                                                                       dispatch={props.dispatch}
+                                                                       newPostText={props.state.pageContents.newPostText}/>}/>
                     <Route path='/dialogs' render={ () => <Dialogs dateDialogs={props.state.dialogsElements}
                                                                    newMessageText={props.state.dialogsElements.newMessageText}
-                                                                   addMessage={props.addMessage}
-                                                                   updateNewMessageText={props.updateNewMessageText}/>} />
+                                                                   dispatch={props.dispatch}/>} />
                     <Route path='/news' component={News}/>
                     <Route path='/music' component={Music}/>
                     <Route path='/settings' component={Settings}/>

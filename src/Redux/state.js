@@ -32,49 +32,38 @@ export const store = {
         }
 
     },
+    _callSubscriber() {},
 
     getState() {
         return this._state
     },
-
-    rerenderEntireTree() {
-    },
-
     subscribe(observer) {
-        this.rerenderEntireTree = observer;
+        this._callSubscriber = observer;
     },
 
-    addPost() {
-        debugger;
-        let post = {
-            id: 5,
-            message: this._state.pageContents.newPostText,
-            likes_counts: 0
-        };
-
-        this._state.pageContents.posts.push(post);
-        this.rerenderEntireTree(store);
+    dispatch(action) { // { action: ADD-POST}
+        if (action.type === "ADD-POST") {
+            let post = {
+                id: 5,
+                message: this._state.pageContents.newPostText,
+                likes_counts: 0
+            };
+            this._state.pageContents.posts.push(post);
+            this._state.pageContents.newPostText = '';
+            this._callSubscriber(store);
+        } else if ( action.type === 'UPDATE-NEW-POST-MESSAGE') {
+            this._state.pageContents.newPostText = action.newText;
+            this._callSubscriber(store);
+        } else if (action.type === 'ADD-MESSAGE') {
+            let message = {
+                message: this._state.dialogsElements.newMessageText
+            };
+            this._state.dialogsElements.messages.push(message);
+            this._state.dialogsElements.newMessageText = '';
+            this._callSubscriber(store);
+        } else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
+            this._state.dialogsElements.newMessageText = action.newText;
+            this._callSubscriber(store);
+        }
     },
-
-    updateNewPostText(newText) {
-        this._state.pageContents.newPostText = newText;
-        this.rerenderEntireTree(store);
-    },
-
-    addMessage() {
-
-        let message = {
-            message: this._state.dialogsElements.newMessageText
-        };
-
-        this._state.dialogsElements.messages.push(message);
-        this._state.dialogsElements.newMessageText = '';
-        this.rerenderEntireTree(store);
-    },
-
-    updateNewMessageText(newText) {
-
-        this._state.dialogsElements.newMessageText = newText;
-        this.rerenderEntireTree(store);
-    }
 };

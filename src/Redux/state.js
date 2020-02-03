@@ -1,3 +1,8 @@
+const ADD_POST = 'ADD-POST';
+const UPDATE_NEW_POST_MESSAGE= 'UPDATE-NEW-POST-MESSAGE';
+const ADD_DIALOG_MESSAGE = 'ADD-DIALOG-MESSAGE';
+const UPDATE_NEW_DIALOG_MESSAGE = 'UPDATE-NEW-DIALOG-MESSAGE';
+
 export const store = {
     _state: {
         dialogsElements: {
@@ -42,7 +47,7 @@ export const store = {
     },
 
     dispatch(action) { // { action: ADD-POST}
-        if (action.type === "ADD-POST") {
+        if (action.type === ADD_POST) {
             let post = {
                 id: 5,
                 message: this._state.pageContents.newPostText,
@@ -51,19 +56,26 @@ export const store = {
             this._state.pageContents.posts.push(post);
             this._state.pageContents.newPostText = '';
             this._callSubscriber(store);
-        } else if ( action.type === 'UPDATE-NEW-POST-MESSAGE') {
+        } else if ( action.type === UPDATE_NEW_POST_MESSAGE) {
             this._state.pageContents.newPostText = action.newText;
             this._callSubscriber(store);
-        } else if (action.type === 'ADD-MESSAGE') {
+        } else if (action.type === ADD_DIALOG_MESSAGE) {
             let message = {
                 message: this._state.dialogsElements.newMessageText
             };
             this._state.dialogsElements.messages.push(message);
             this._state.dialogsElements.newMessageText = '';
             this._callSubscriber(store);
-        } else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
+        } else if (action.type === UPDATE_NEW_DIALOG_MESSAGE) {
             this._state.dialogsElements.newMessageText = action.newText;
             this._callSubscriber(store);
         }
     },
 };
+
+export const addPostActionCreator = () => ({type: ADD_POST});
+export const updateNewPostMessageActionCreate = (newText) => ({type: UPDATE_NEW_POST_MESSAGE,
+                                                        newText: newText});
+export const addMessageActionCreator = () => ({type: ADD_DIALOG_MESSAGE});
+export const updateNewDialogMessageActionCreate = (newText) => ({type: UPDATE_NEW_DIALOG_MESSAGE,
+    newText: newText})

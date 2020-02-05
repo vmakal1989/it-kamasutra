@@ -1,7 +1,5 @@
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_MESSAGE= 'UPDATE-NEW-POST-MESSAGE';
-const ADD_DIALOG_MESSAGE = 'ADD-DIALOG-MESSAGE';
-const UPDATE_NEW_DIALOG_MESSAGE = 'UPDATE-NEW-DIALOG-MESSAGE';
+import pageContentsReducer from "./pageContentsReducer";
+import dialogsElementsReducer from "./dialogsElementsReducer";
 
 export const store = {
     _state: {
@@ -46,36 +44,11 @@ export const store = {
         this._callSubscriber = observer;
     },
 
-    dispatch(action) { // { action: ADD-POST}
-        if (action.type === ADD_POST) {
-            let post = {
-                id: 5,
-                message: this._state.pageContents.newPostText,
-                likes_counts: 0
-            };
-            this._state.pageContents.posts.push(post);
-            this._state.pageContents.newPostText = '';
-            this._callSubscriber(store);
-        } else if ( action.type === UPDATE_NEW_POST_MESSAGE) {
-            this._state.pageContents.newPostText = action.newText;
-            this._callSubscriber(store);
-        } else if (action.type === ADD_DIALOG_MESSAGE) {
-            let message = {
-                message: this._state.dialogsElements.newMessageText
-            };
-            this._state.dialogsElements.messages.push(message);
-            this._state.dialogsElements.newMessageText = '';
-            this._callSubscriber(store);
-        } else if (action.type === UPDATE_NEW_DIALOG_MESSAGE) {
-            this._state.dialogsElements.newMessageText = action.newText;
-            this._callSubscriber(store);
-        }
+    dispatch(action) {
+        this._state.pageContents = pageContentsReducer(this._state.pageContents, action);
+        this._state.dialogsElements = dialogsElementsReducer(this._state.dialogsElements, action);
+
+        this._callSubscriber(store);
+
     },
 };
-
-export const addPostActionCreator = () => ({type: ADD_POST});
-export const updateNewPostMessageActionCreate = (newText) => ({type: UPDATE_NEW_POST_MESSAGE,
-                                                        newText: newText});
-export const addMessageActionCreator = () => ({type: ADD_DIALOG_MESSAGE});
-export const updateNewDialogMessageActionCreate = (newText) => ({type: UPDATE_NEW_DIALOG_MESSAGE,
-    newText: newText})

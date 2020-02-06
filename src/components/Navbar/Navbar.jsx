@@ -5,8 +5,7 @@ import LinksMenu from './LinksMenu/linksMenu';
 
 const Navbar = (props) => {
     debugger;
-    let topFriends = props.topFriends.friends.map( f => <TopFriends image={f.image}/>);
-
+    let topFriends = props.state.topFriends.friends.map( f => <TopFriends image={f.image}/>);
     return (
         <nav className={style.nav}>
             <LinksMenu />

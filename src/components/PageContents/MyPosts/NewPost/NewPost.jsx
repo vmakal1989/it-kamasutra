@@ -1,31 +1,26 @@
 import React from 'react';
 import style from './NewPost.module.css';
-import {addPostActionCreator, updateNewPostMessageActionCreate} from "../../../../Redux/pageContentsReducer";
 
 const NewPost = (props) => {
 
-    let newPostElement = React.createRef();
 
-    let addPost = () => {
-        let action = addPostActionCreator();
-        props.dispatch(action);
+    let onAddPost = () => {
+        props.addPost();
     };
 
-    let onPostChange = () => {
-        let newText = newPostElement.current.value;
-        let action = updateNewPostMessageActionCreate(newText);
-        props.dispatch(action);
+    let onPostChange = (e) => {
+        let newText = e.target.value;
+        props.postChange(newText);
     };
 
     return (
         <div className={style.newpost}>
             <div>
-                <textarea ref={newPostElement}
-                          onChange={onPostChange}
+                <textarea onChange={onPostChange}
                           value={props.newPostText}/>
             </div>
             <div>
-                <button onClick={ addPost }>Add post</button>
+                <button onClick={ onAddPost }>Add post</button>
             </div>
         </div>
     )

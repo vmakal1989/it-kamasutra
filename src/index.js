@@ -6,17 +6,16 @@ import App from './App';
 import store from './Redux/storeRedux';
 import {BrowserRouter} from "react-router-dom";
 
-let rerenderEntireTree = (state) => {
+let rerenderEntireTree = (store) => {
     ReactDOM.render(<BrowserRouter>
-        <App state={state.getState()}
-             dispatch={state.dispatch.bind(store)}/>
+        <App store={store}/>
     </BrowserRouter>, document.getElementById('root'));
-}
+};
 
 rerenderEntireTree(store);
 
 store.subscribe(() => {
-    rerenderEntireTree(store)
+    rerenderEntireTree(store);
 });
 
 

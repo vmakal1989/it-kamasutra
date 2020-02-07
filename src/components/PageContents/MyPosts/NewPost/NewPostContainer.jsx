@@ -1,24 +1,27 @@
 import React from 'react';
 import {addPostActionCreator, updateNewPostMessageActionCreate} from "../../../../Redux/pageContentsReducer";
 import NewPost from "./NewPost";
+import {connect} from "react-redux";
 
-const NewPostContainer = (props) => {
+const mapStateToProps = (state) => {
+    return {
+        newPostText: state.pageContents.newPostText
+    }
+};
 
-    let state = props.store.getState();
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addPost: () => {
+            let action = addPostActionCreator();
+            dispatch(action);
+        },
+        postChange: (newText) => {
+            let action = updateNewPostMessageActionCreate(newText);
+            dispatch(action);
+        }
+    }
+};
 
-    let addPost = () => {
-        let action = addPostActionCreator();
-        props.store.dispatch(action);
-    };
-
-    let postChange = (newText) => {
-        let action = updateNewPostMessageActionCreate(newText);
-        props.store.dispatch(action);
-    };
-
-    return <NewPost addPost = {addPost}
-                    postChange = {postChange}
-                    newPostText = {state.pageContents.newPostText} />
-}
+const NewPostContainer = connect(mapStateToProps,mapDispatchToProps)(NewPost);
     
 export default NewPostContainer;

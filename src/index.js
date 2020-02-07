@@ -5,10 +5,13 @@ import './index.css';
 import App from './App';
 import store from './Redux/storeRedux';
 import {BrowserRouter} from "react-router-dom";
+import {Provider} from "react-redux";
 
 let rerenderEntireTree = (store) => {
     ReactDOM.render(<BrowserRouter>
-        <App store={store}/>
+        <Provider store={store}>
+            <App />
+        </Provider>
     </BrowserRouter>, document.getElementById('root'));
 };
 

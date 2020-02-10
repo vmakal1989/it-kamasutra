@@ -17,16 +17,18 @@ const pageContentsReducer = (state = initialState, action) => {
                 message: state.newPostText,
                 likes_counts: 0
             };
-            let stateCopy = {...state};
-            stateCopy.posts = [...state.posts];
-            stateCopy.posts.push(post);
-            stateCopy.newPostText = '';
-            return stateCopy;
+            return {
+                ...state,
+                posts: [...state.posts, post],
+                newPostText: ''
+            };
+
         }
         case UPDATE_NEW_POST_MESSAGE: {
-            let stateCopy = {...state};
-            stateCopy.newPostText = action.newText;
-            return stateCopy;
+            return {
+                ...state,
+                newPostText: action.newText
+            };
         }
         default:
             return state;
@@ -35,6 +37,6 @@ const pageContentsReducer = (state = initialState, action) => {
 
 export const addPostActionCreator = () => ({type: ADD_POST});
 export const updateNewPostMessageActionCreate = (newText) => ({type: UPDATE_NEW_POST_MESSAGE,
-    newText: newText});
+                                                               newText: newText});
 
 export default pageContentsReducer;

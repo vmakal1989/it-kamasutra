@@ -1,0 +1,61 @@
+.userBlock {
+    margin: 0 auto;
+    display: grid;
+
+    grid-template-areas:
+            "photoUrl title country"
+            "button title city";
+
+    grid-template-columns: 120px 500px 150px;
+}
+
+.page {
+    width: 770px;
+    height: 770px;
+    background-color: #424242;
+    margin: 10px 0px 25px 25px;
+    border-radius: 5px;
+    padding-top: 5px;
+}
+
+.userBlock {
+
+    width: 750px;
+    height: 150px;
+    background-color: #343434;
+    margin: 10px;
+    border-radius: 3px;
+}
+
+.photoUrl {
+    grid-area: photoUrl;
+    width: 120px;
+    height: 105px;
+}
+
+.photoUrl img {
+    width: 120px;
+    height: 105px;
+    border-radius: 5px;
+}
+
+.button {
+    grid-area: button;
+    width: 120px;
+    height: 40px;
+    border-radius: 3px;
+}
+
+.title {
+    grid-area: title;
+}
+
+.country {
+    grid-area: country;
+    text-align: center;
+}
+
+.city {
+    grid-area: city;
+    text-align: center;
+}

@@ -9,7 +9,7 @@ let initialState = {
     newPostText: 'It world'
 };
 
-const pageContentsReducer = (state = initialState, action) => {
+const postsReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST: {
             let post = {
@@ -39,4 +39,4 @@ export const addPostActionCreator = () => ({type: ADD_POST});
 export const updateNewPostMessageActionCreate = (newText) => ({type: UPDATE_NEW_POST_MESSAGE,
                                                                newText: newText});
 
-export default pageContentsReducer;
+export default postsReducer;

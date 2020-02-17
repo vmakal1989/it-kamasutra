@@ -4,14 +4,17 @@ import * as axios from 'axios';
 import defaultAvatar from '../../../assets/image/user.png'
 
 const Users = (props) => {
-    if (props.users.length === 0 ) {
-        axios.get("https://social-network.samuraijs.com/api/1.0/users")
-            .then( response => {
-                props.SET_USERS(response.data.items);
-            })
-    }
+    const getUsers = () => {
+        if (props.users.length === 0) {
+            axios.get("https://social-network.samuraijs.com/api/1.0/users")
+                .then(response => {
+                    props.SET_USERS(response.data.items);
+                })
+        }
+    };
     return (
         <div className={s.page}>
+            <button onClick={getUsers}>getUsers</button>
             {
                 props.users.map ( u =>
                     <div key={u.id} className={s.userBlock}>

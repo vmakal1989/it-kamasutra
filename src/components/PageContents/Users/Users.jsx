@@ -5,10 +5,7 @@ import defaultAvatar from '../../../assets/image/user.png'
 
 class Users extends React.Component {
 
-    constructor (props) {
-
-        super(props);
-
+    componentDidMount() {
         axios.get("https://node-js-api-for-it-kamasuntra.herokuapp.com/users")
             .then(response => {
                 this.props.SET_USERS(response.data.items);

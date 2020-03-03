@@ -1,5 +1,4 @@
 import {connect} from "react-redux";
-import Users from "./Users";
 import {
     followAC,
     setCurrentPageAC,
@@ -7,6 +6,39 @@ import {
     setUsers,
     unFollowAC
 } from "../../../Redux/pageContentsReducers/usersReducer";
+import React from "react";
+import Users from "./Users";
+import * as axios from "axios";
+
+class UsersAPIComponent extends React.Component {
+
+    componentDidMount() {
+        axios.get(`https://node-js-api-for-it-kamasuntra.herokuapp.com/users?page=${this.props.currentPage}
+                                                                     &count=${this.props.pageSize}`)
+            .then(response => {
+                this.props.SET_USERS(response.data.items);
+                this.props.SET_TOTAL_COUNT(response.data.totalCount);
+            });
+    }
+    onPageChange = (pageNumber)  => {
+        this.props.SET_CURRENT_PAGE(pageNumber)
+        axios.get(`https://node-js-api-for-it-kamasuntra.herokuapp.com/users?page=${pageNumber}
+                                                                     &count=${this.props.pageSize}`)
+            .then(response => {
+                this.props.SET_USERS(response.data.items);
+            });
+    }
+
+    render() {
+        return <Users totalCount={this.props.totalCount}
+                      pageSize={this.props.pageSize}
+                      currentPage={this.props.currentPage}
+                      users={this.props.users}
+                      onPageChange={this.onPageChange}
+                      FOLLOW={this.props.FOLLOW}
+                      UNFOLLOW={this.props.UNFOLLOW}/>
+    }
+}
 
 const mapStateToProps = (state) => {
     return {
@@ -44,6 +76,7 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(Users);
+const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersAPIComponent);
+
 
 export default UsersContainer;

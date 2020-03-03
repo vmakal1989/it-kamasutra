@@ -59,3 +59,11 @@
     grid-area: city;
     text-align: center;
 }
+
+.currentPage{
+    font-weight: bold;
+}
+
+.pageNumbers span {
+    cursor: pointer;
+}

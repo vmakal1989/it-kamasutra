@@ -7,17 +7,17 @@ class Users extends React.Component {
 
     componentDidMount() {
         //axios.get("https://node-js-api-for-it-kamasuntra.herokuapp.com/users")
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}
+        axios.get(`https://node-js-api-for-it-kamasuntra.herokuapp.com/users?page=${this.props.currentPage}
                                                                      &count=${this.props.pageSize}`)
             .then(response => {
                 this.props.SET_USERS(response.data.items);
-                this.props.SET_TOTAL_COUNT(50);
+                this.props.SET_TOTAL_COUNT(response.data.totalCount);
             });
     }
     onPageChange = (pageNumber)  => {
         this.props.SET_CURRENT_PAGE(pageNumber)
         //axios.get("https://node-js-api-for-isadt-kamasuntra.herokuapp.com/users")
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}
+        axios.get(`https://node-js-api-for-it-kamasuntra.herokuapp.com/users?page=${pageNumber}
                                                                      &count=${this.props.pageSize}`)
             .then(response => {
                 this.props.SET_USERS(response.data.items);

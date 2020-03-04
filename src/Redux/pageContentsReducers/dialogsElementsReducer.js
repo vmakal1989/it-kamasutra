@@ -42,8 +42,8 @@ const dialogsElementsReducer = (state = initialState , action) => {
     }
 };
 
-export const addMessageActionCreator = () => ({type: ADD_DIALOG_MESSAGE});
-export const updateNewDialogMessageActionCreate = (newText) => ({type: UPDATE_NEW_DIALOG_MESSAGE,
+export const addMessage = () => ({type: ADD_DIALOG_MESSAGE});
+export const changeMessage = (newText) => ({type: UPDATE_NEW_DIALOG_MESSAGE,
                                                                  newText: newText});
 
 export default dialogsElementsReducer;

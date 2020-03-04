@@ -4,11 +4,11 @@ import style from './NewPost.module.css';
 const NewPost = (props) => {
 
 
-    let onAddPost = () => {
+    let addPost = () => {
         props.addPost();
     };
 
-    let onPostChange = (e) => {
+    let postChange = (e) => {
         let newText = e.target.value;
         props.postChange(newText);
     };
@@ -16,11 +16,11 @@ const NewPost = (props) => {
     return (
         <div className={style.newpost}>
             <div>
-                <textarea onChange={onPostChange}
+                <textarea onChange={postChange}
                           value={props.newPostText}/>
             </div>
             <div>
-                <button onClick={ onAddPost }>Add post</button>
+                <button onClick={ addPost }>Add post</button>
             </div>
         </div>
     )

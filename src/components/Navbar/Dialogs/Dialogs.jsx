@@ -6,11 +6,11 @@ import MessagesUser from "./MessagesUser/Message";
 const Dialogs = (props) => {
 
 
-    let onAddMessage = () => {
+    let addMessage = () => {
        props.addMessage();
     };
 
-    let onChangeMessage = (e) => {
+    let changeMessage = (e) => {
         let newMessageText = e.target.value;
         props.changeMessage(newMessageText);
     };
@@ -31,11 +31,11 @@ const Dialogs = (props) => {
                     {messagesElement}
                 </div>
                 <div className={style.sendMessage}>
-                    <textarea onChange={onChangeMessage}
+                    <textarea onChange={changeMessage}
                               value={props.dialogsElements.newMessageText}
                               />
                     <div>
-                        <button onClick={onAddMessage}>Send</button>
+                        <button onClick={addMessage}>Send</button>
                     </div>
                 </div>
         </div>

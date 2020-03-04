@@ -1,10 +1,10 @@
 import {connect} from "react-redux";
 import {
-    followAC,
-    setCurrentPageAC,
-    setTotalUsersCountAC,
-    setUsers, toggleIsFetchingAC,
-    unFollowAC
+    follow,
+    setCurrentPage,
+    setTotalUsersCount,
+    setUsers, toggleIsFetching,
+    unFollow
 } from "../../../Redux/pageContentsReducers/usersReducer";
 import React from "react";
 import Users from "./Users";
@@ -20,18 +20,18 @@ class UsersAPIComponent extends React.Component {
                                                                      &count=${this.props.pageSize}`)
             .then(response => {
                 this.props.toggleIsFetching(false);
-                this.props.SET_USERS(response.data.items);
-                this.props.SET_TOTAL_COUNT(response.data.totalCount);
+                this.props.setUsers(response.data.items);
+                this.props.setTotalUsersCount(response.data.totalCount);
             });
     }
     onPageChange = (pageNumber)  => {
-        this.props.SET_CURRENT_PAGE(pageNumber);
+        this.props.setCurrentPage(pageNumber);
         this.props.toggleIsFetching(true);
         axios.get(`https://node-js-api-for-it-kamasuntra.herokuapp.com/users?page=${pageNumber}
                                                                      &count=${this.props.pageSize}`)
             .then(response => {
                 this.props.toggleIsFetching(false);
-                this.props.SET_USERS(response.data.items);
+                this.props.setUsers(response.data.items);
             });
     }
 
@@ -43,11 +43,11 @@ class UsersAPIComponent extends React.Component {
                 </div>
             <Users totalCount={this.props.totalCount}
                           pageSize={this.props.pageSize}
-                          currentPage={this.props.currentPage}
+                          currentPage={this.props.setCurrentPage}
                           users={this.props.users}
                           onPageChange={this.onPageChange}
-                          FOLLOW={this.props.FOLLOW}
-                          UNFOLLOW={this.props.UNFOLLOW}/>
+                          follow={this.props.follow}
+                          unFollow={this.props.unFollow}/>
             </>
         )
     }
@@ -63,38 +63,9 @@ const mapStateToProps = (state) => {
     }
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        FOLLOW: (userID) => {
-            let action = followAC(userID);
-            dispatch(action);
-        },
-
-        UNFOLLOW: (userID) => {
-            let action = unFollowAC(userID);
-            dispatch(action);
-        },
-
-        SET_USERS: (users) => {
-            let action = setUsers(users);
-            dispatch(action);
-        },
-        SET_TOTAL_COUNT: (totalUsersCount) => {
-            let action = setTotalUsersCountAC(totalUsersCount);
-            dispatch(action);
-        },
-        SET_CURRENT_PAGE: (currentPage) => {
-            let action = setCurrentPageAC(currentPage);
-            dispatch(action);
-        },
-        toggleIsFetching: (isFetching) => {
-            let action = toggleIsFetchingAC(isFetching);
-            dispatch(action);
-        }
-    }
-};
-
-const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersAPIComponent);
+const UsersContainer = connect(mapStateToProps,
+    {follow, unFollow, setUsers, setTotalUsersCount, setCurrentPage,  toggleIsFetching
+    })(UsersAPIComponent);
 
 
 export default UsersContainer;

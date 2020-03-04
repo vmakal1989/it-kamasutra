@@ -35,8 +35,8 @@ const postsReducer = (state = initialState, action) => {
     }
 };
 
-export const addPostActionCreator = () => ({type: ADD_POST});
-export const updateNewPostMessageActionCreate = (newText) => ({type: UPDATE_NEW_POST_MESSAGE,
+export const addPost = () => ({type: ADD_POST});
+export const postChange = (newText) => ({type: UPDATE_NEW_POST_MESSAGE,
                                                                newText: newText});
 
 export default postsReducer;

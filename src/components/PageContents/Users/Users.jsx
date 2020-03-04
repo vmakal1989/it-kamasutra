@@ -25,7 +25,7 @@ const Users = (props) => {
                             <img src={ u.photos.small != null ?  u.photos.small : defaultAvatar}/>
                         </div>
                         <button className={s.button}
-                                onClick={()=> u.followed == true ? props.UNFOLLOW(u.id) : props.FOLLOW(u.id)}>
+                                onClick={()=> u.followed == true ? props.unFollow(u.id) : props.follow(u.id)}>
                             {u.followed == true ? 'UNFOLLOW' : 'FOLLOW'}
                         </button>
                         <div className={s.title}>

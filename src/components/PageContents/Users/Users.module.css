@@ -67,3 +67,13 @@
 .pageNumbers span {
     cursor: pointer;
 }
+.preloader {
+    position: absolute;
+    overflow: visible;
+    disaply: block;
+    z-index: 1000;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+
+}

@@ -1,0 +1,42 @@
+.page {
+    width: 770px;
+    height: 850px;
+    background-color: #424242;
+    margin: 10px 0px 25px 25px;
+    border-radius: 5px;
+    padding-top: 5px;
+}
+
+.userBlock {
+    margin: 0 auto;
+    display: grid;
+
+    grid-template-areas:
+            "oneColomn twoColomn ";
+
+    grid-template-columns: 300px 470px ;
+}
+
+.oneColomn {
+    grid-area: oneColomn;
+    width: 250px;
+    padding:10px;
+    background-color: #343434;
+    margin: 10px 0px 10px 20px;
+    border-radius: 5px;
+}
+
+.twoColomn {
+    grid-area: twoColomn;
+    width: 420px;
+    padding:10px;
+    background-color: #343434;
+    margin: 10px 0px 0px 10px;
+    border-radius: 5px;
+}
+
+.oneColomn img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}

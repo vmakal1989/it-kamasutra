@@ -12,7 +12,7 @@ import * as axios from "axios";
 import Preloader from "../../common/Preloader/Preloader";
 import s from "./Users.module.css";
 
-class UsersAPIComponent extends React.Component {
+class usersAPIComponent extends React.Component {
 
     componentDidMount() {
         this.props.toggleIsFetching(true);
@@ -65,7 +65,7 @@ const mapStateToProps = (state) => {
 
 const UsersContainer = connect(mapStateToProps,
     {follow, unFollow, setUsers, setTotalUsersCount, setCurrentPage,  toggleIsFetching
-    })(UsersAPIComponent);
+    })(usersAPIComponent);
 
 
 export default UsersContainer;

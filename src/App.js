@@ -20,7 +20,7 @@ const App = () => {
                 <div>
                     <Route path='/' exact render={ () => <PageContents />}/>
                     <Route path='/users'  exact render={ () => <UsersContainer />} />
-                    <Route path='/users/2' render={ () => <UserProfileContainer />} />
+                    <Route path='/users/:userId' render={ () => <UserProfileContainer />} />
                     <Route path='/dialogs' render={ () => <DialogsContainer />} />
                     <Route path='/news' component={News}/>
                     <Route path='/music' component={Music}/>

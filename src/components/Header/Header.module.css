@@ -7,3 +7,12 @@
 .header img {
   width: 80px;
 }
+
+.authUser {
+  float: right;
+  padding: 20px;
+}
+
+.authUser a {
+  color: white;
+}

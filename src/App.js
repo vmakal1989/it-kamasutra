@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import Header from './components/Header/Header';
 import PageContents from './components/PageContents/PageContents';
 import Profile from './components/Profile/Profile';
 import {Route} from "react-router-dom";
@@ -11,11 +10,12 @@ import DialogsContainer from "./components/Navbar/Dialogs/DialogsContainer";
 import NavbarContainer from "./components/Navbar/NavbarContainer";
 import UsersContainer from "./components/PageContents/Users/UsersContainer";
 import  {UserProfileContainer} from './components/PageContents/Users/UserProfile/UserProfileContainer'
+import HeaderContainer from "./components/Header/HeaderContainer";
 
 const App = () => {
     return (
             <div className="app-wrapper">
-                <Header />
+                <HeaderContainer />
                 <NavbarContainer />
                 <div>
                     <Route path='/' exact render={ () => <PageContents />}/>

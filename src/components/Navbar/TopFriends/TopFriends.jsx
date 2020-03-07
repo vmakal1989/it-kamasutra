@@ -1,10 +1,9 @@
 import React from 'react';
-import style from "../Navbar.module.css";
 
 const TopFriends = (props) => {
     return (
         <div>
-            <img src={props.image}/>
+            <img src={props.image} alt={props.image}/>
         </div>
     )
 }

@@ -14,7 +14,7 @@ const UserProfile = (props) => {
             <div className={s.userBlock}>
                 <div className={s.oneColomn}>
                     <div>
-                        <img src={u.photos.large}/>
+                        <img src={u.photos.large} alt={u.photos.large}/>
                     </div>
                 </div>
                 <div className={s.twoColomn}>

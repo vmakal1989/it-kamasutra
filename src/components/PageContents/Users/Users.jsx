@@ -24,12 +24,13 @@ const Users = (props) => {
                     <div key={u.id} className={s.userBlock}>
                         <NavLink to={'/users/' +  u.id}>
                             <div className={s.photoUrl}>
-                                <img src={ u.photos.small != null ?  u.photos.small : defaultAvatar}/>
+                                <img src={ u.photos.small != null ?  u.photos.small : defaultAvatar}
+                                     alt={ u.photos.small != null ?  u.photos.small : defaultAvatar}/>
                             </div>
                         </NavLink>
                         <button className={s.button}
-                                onClick={()=> u.followed == true ? props.unFollow(u.id) : props.follow(u.id)}>
-                            {u.followed == true ? 'UNFOLLOW' : 'FOLLOW'}
+                                onClick={()=> u.followed ? props.unFollow(u.id) : props.follow(u.id)}>
+                            {u.followed ? 'UNFOLLOW' : 'FOLLOW'}
                         </button>
                         <div className={s.title}>
                             <div>{u.name}</div>

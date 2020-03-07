@@ -3,7 +3,6 @@ import style from './Header.module.css';
 import {NavLink} from "react-router-dom";
 
 const Header = (props) => {
-    debugger
     return (
       <header className={style.header}>
         <img src="http://weblab.ua/wp-content/uploads/2017/08/react-learning.png"

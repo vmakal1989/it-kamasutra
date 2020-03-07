@@ -3,7 +3,7 @@ import style from './Settings.module.css';
 
 const Settings = () => {
     return (
-        <div>
+        <div className={style.block}>
             Hello Settings
         </div>
     )

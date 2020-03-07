@@ -2,12 +2,14 @@ import React from 'react';
 import style from './Header.module.css';
 import {NavLink} from "react-router-dom";
 
-const Header = () => {
+const Header = (props) => {
+    debugger
     return (
       <header className={style.header}>
-        <img src="http://weblab.ua/wp-content/uploads/2017/08/react-learning.png"/>
+        <img src="http://weblab.ua/wp-content/uploads/2017/08/react-learning.png"
+             alt={"http://weblab.ua/wp-content/uploads/2017/08/react-learning.png"}/>
         <div className={style.authUser}>
-            <NavLink to={'/login'}>login</NavLink>
+            { !props.isAuth ? <NavLink to={'/login'}>login </NavLink> : props.login}
         </div>
       </header>
     )

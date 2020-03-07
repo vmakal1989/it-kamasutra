@@ -4,13 +4,15 @@ import dialogsElementsReducer from "./pageContentsReducers/dialogsElementsReduce
 import topFriendsReducer from "./topFriendsReducer";
 import usersReducer from "./pageContentsReducers/usersReducer";
 import userProfileReducer from "./pageContentsReducers/userProfileReducer";
+import authReducer from "./headerReducers/authReducer";
 
 let reducers = combineReducers({
     pageContents: postsReducer,
     dialogsElements: dialogsElementsReducer,
     topFriends: topFriendsReducer,
     usersPage: usersReducer,
-    userProfile: userProfileReducer
+    userProfile: userProfileReducer,
+    auth: authReducer
 });
 
 let store = createStore(reducers);

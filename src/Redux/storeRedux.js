@@ -1,10 +1,10 @@
 import {combineReducers, createStore} from "redux";
-import postsReducer from "./pageContentsReducers/postsReducer";
-import dialogsElementsReducer from "./pageContentsReducers/dialogsElementsReducer";
-import topFriendsReducer from "./topFriendsReducer";
-import usersReducer from "./pageContentsReducers/usersReducer";
-import userProfileReducer from "./pageContentsReducers/userProfileReducer";
-import authReducer from "./headerReducers/authReducer";
+import postsReducer from "./pageContentsReducers/posts-reducer";
+import dialogsElementsReducer from "./pageContentsReducers/dialogsElements-reducer";
+import topFriendsReducer from "./topFriends-reducer";
+import usersReducer from "./pageContentsReducers/users-reducer";
+import userProfileReducer from "./pageContentsReducers/userProfile-reducer";
+import authReducer from "./headerReducers/auth-reducer";
 
 let reducers = combineReducers({
     pageContents: postsReducer,

@@ -1,4 +1,4 @@
-import {addPost, postChange} from "../../../../Redux/pageContentsReducers/postsReducer";
+import {addPost, postChange} from "../../../../Redux/pageContentsReducers/posts-reducer";
 import NewPost from "./NewPost";
 import {connect} from "react-redux";
 

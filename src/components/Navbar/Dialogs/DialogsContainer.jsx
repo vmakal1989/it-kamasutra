@@ -1,4 +1,4 @@
-import {addMessage, changeMessage} from "../../../Redux/pageContentsReducers/dialogsElementsReducer";
+import {addMessage, changeMessage} from "../../../Redux/pageContentsReducers/dialogsElements-reducer";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 

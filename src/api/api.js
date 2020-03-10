@@ -1,4 +1,5 @@
 import * as axios from "axios";
+import {toggleIsDisabled} from "../Redux/pageContentsReducers/users-reducer";
 
 const instance = axios.create({
     withCredentials: true,
@@ -14,12 +15,14 @@ export const usersAPI = {
             instance.get(`users?page=${page}&count=${pageSize}`))
             .then(response => response.data)
     },
-    unFollow(id){
+    unFollow(id, toggleIsDisabled){
+        toggleIsDisabled(true, id);
         return (
             instance.delete(`follow/${id}`))
                 .then(response => response.data)
     },
-    follow(id){
+    follow(id, toggleIsDisabled){
+        toggleIsDisabled(true, id);
         return(
             instance.post(`follow/${id}`))
             .then(response => response.data)

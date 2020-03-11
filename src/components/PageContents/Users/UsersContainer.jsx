@@ -1,36 +1,23 @@
 import {connect} from "react-redux";
 import {
-    follow,
+    follow, getUsers,
     setCurrentPage,
     setTotalUsersCount,
-    setUsers, toggleIsDisabled, toggleIsFetching,
+    toggleIsDisabled, toggleIsFetching,
     unFollow
 } from "../../../Redux/pageContentsReducers/users-reducer";
 import React from "react";
 import Users from "./Users";
 import Preloader from "../../common/Preloader/Preloader";
 import s from "./Users.module.css";
-import {usersAPI} from "../../../api/api";
 
 class usersAPIComponent extends React.Component {
 
     componentDidMount() {
-        this.props.toggleIsFetching(true);
-        usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
-            .then(data => {
-                this.props.toggleIsFetching(false);
-                this.props.setUsers(data.items);
-                this.props.setTotalUsersCount(data.totalCount);
-            });
+        this.props.getUsers(this.props.currentPage, this.props.pageSize)
     }
     onPageChange = (pageNumber)  => {
-        this.props.setCurrentPage(pageNumber);
-        this.props.toggleIsFetching(true);
-        usersAPI.getUsers(pageNumber, this.props.pageSize)
-            .then(data => {
-                this.props.toggleIsFetching(false);
-                this.props.setUsers(data.items);
-            });
+        this.props.getUsers(pageNumber, this.props.pageSize)
     };
 
     render() {
@@ -46,8 +33,7 @@ class usersAPIComponent extends React.Component {
                           onPageChange={this.onPageChange}
                           follow={this.props.follow}
                           unFollow={this.props.unFollow}
-                          isDisabled={this.props.isDisabled}
-                          toggleIsDisabled={this.props.toggleIsDisabled}/>
+                          isDisabled={this.props.isDisabled}/>
             </>
         )
     }
@@ -65,7 +51,7 @@ const mapStateToProps = (state) => {
 };
 
 const UsersContainer = connect(mapStateToProps,
-    {follow, unFollow, setUsers, setTotalUsersCount, setCurrentPage,  toggleIsFetching, toggleIsDisabled
+    {follow, unFollow, getUsers,setCurrentPage
     })(usersAPIComponent);
 
 

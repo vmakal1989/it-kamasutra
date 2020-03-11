@@ -1,3 +1,5 @@
+import {usersAPI} from "../../api/api";
+
 let FOLLOW = 'FOLLOW';
 let UNFOLLOW = 'UNFOLLOW';
 let SET_USERS = 'SET_USERS';
@@ -63,15 +65,51 @@ const usersReducer = (state = initialState, action) => {
     }
 };
 
-export const follow = (userID) => ({type: FOLLOW,  userID: userID});
-export const unFollow = (userID) => ({type: UNFOLLOW,  userID: userID});
+export const followSuccess = (userID) => ({type: FOLLOW,  userID: userID});
+export const unFollowSuccess = (userID) => ({type: UNFOLLOW,  userID: userID});
 export const setUsers = (users) => ({type: SET_USERS, users: users});
 export const setTotalUsersCount = (totalUsersCount) => ({type: SET_USERS_TOTAL_COUNT, totalUsersCount});
 export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching});
 export const toggleIsDisabled = (isDisabled, userID) => ({type: TOGGLE_IS_DISABLED, isDisabled, userID});
 
+export const getUsers = (currentPage, pageSize) => {
+    return (dispatch) => {
+        dispatch(toggleIsFetching(true));
+        usersAPI.getUsers(currentPage, pageSize)
+            .then(data => {
+                dispatch(toggleIsFetching(false));
+                dispatch(setUsers(data.items));
+                dispatch(setTotalUsersCount(data.totalCount));
+            });
+    }
+};
 
+export const follow = (userID) => {
+    return (dispatch) => {
+        dispatch(toggleIsDisabled(true, userID));
+        usersAPI.follow(userID)
+            .then(data => {
+                if(data.resultCode === 0) {
+                    dispatch(followSuccess(userID))
+                }
+                dispatch(toggleIsDisabled(false, userID))
+            })
+    }
+};
+
+export const unFollow = (userID) => {
+    return (dispatch) => {
+        dispatch(toggleIsDisabled(true, userID))
+        usersAPI.unFollow(userID)
+            .then(data => {
+                if(data.resultCode === 0) {
+                    dispatch(unFollowSuccess(userID))
+                }
+                dispatch(toggleIsDisabled(false, userID))
+            })
+    }
+};
 
 
 export default usersReducer;

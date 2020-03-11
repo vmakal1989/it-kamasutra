@@ -2,7 +2,6 @@ import React from 'react';
 import s from "./Users.module.css";
 import defaultAvatar from "../../../assets/image/user.png";
 import {NavLink} from "react-router-dom";
-import {usersAPI} from "../../../api/api";
 
 const Users = (props) => {
 
@@ -31,21 +30,9 @@ const Users = (props) => {
                         </NavLink>
                         <button disabled={props.isDisabled.some(id => id === u.id)} className={s.button}
                                 onClick={() => u.followed ?
-                                    usersAPI.unFollow(u.id, props.toggleIsDisabled)
-                                        .then(data => {
-                                            if(data.resultCode === 0) {
-                                                props.unFollow(u.id)
-                                            }
-                                            props.toggleIsDisabled(false, u.id)
-                                        })
+                                    props.unFollow(u.id)
                                     :
-                                    usersAPI.follow(u.id, props.toggleIsDisabled)
-                                        .then(data => {
-                                            if(data.resultCode === 0) {
-                                                props.follow(u.id)
-                                            }
-                                            props.toggleIsDisabled(false, u.id)
-                                        })} >
+                                    props.follow(u.id) } >
                             {u.followed ? 'UNFOLLOW' : 'FOLLOW'}
                         </button>
                         <div className={s.title}>

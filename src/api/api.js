@@ -33,3 +33,11 @@ export const authAPI = {
         ).then(response => response.data)
     }
 };
+
+export const userProfileAPI = {
+    getUserProfile(userId) {
+        return (
+            instance.get(`profile/${userId}`)
+        ).then(data => data.data)
+    }
+}

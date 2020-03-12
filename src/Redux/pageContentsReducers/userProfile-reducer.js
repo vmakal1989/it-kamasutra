@@ -1,3 +1,6 @@
+import * as axios from "axios";
+import {userProfileAPI} from "../../api/api";
+
 let SET_USER_PROFILE = 'SET_USER_PROFILE';
 
 let initialState = {
@@ -13,6 +16,15 @@ const userProfileReducer = (state = initialState, action) => {
     }
 
 };
+
+export const getUserProfile = (userId) => {
+    return (dispatch) => {
+        userProfileAPI.getUserProfile(userId)
+            .then(data => {
+                dispatch(setUserProfile(data));
+            });
+    }
+}
 
 export const setUserProfile = (userProfile) => ({ type: SET_USER_PROFILE, userProfile });
 export default userProfileReducer;

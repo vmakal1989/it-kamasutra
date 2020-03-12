@@ -1,11 +1,5 @@
 import {connect} from "react-redux";
-import {
-    follow, getUsers,
-    setCurrentPage,
-    setTotalUsersCount,
-    toggleIsDisabled, toggleIsFetching,
-    unFollow
-} from "../../../Redux/pageContentsReducers/users-reducer";
+import { follow, getUsers, setCurrentPage, unFollow } from "../../../Redux/pageContentsReducers/users-reducer";
 import React from "react";
 import Users from "./Users";
 import Preloader from "../../common/Preloader/Preloader";

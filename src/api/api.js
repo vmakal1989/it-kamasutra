@@ -21,7 +21,15 @@ export const usersAPI = {
     },
     follow(id, toggleIsDisabled){
         return(
-            instance.post(`follow/${id}`))
-            .then(response => response.data)
+            instance.post(`follow/${id}`)
+        ).then(response => response.data)
+    }
+};
+
+export const authAPI = {
+    authME() {
+        return (
+            instance.get(`auth/me`)
+        ).then(response => response.data)
     }
 };

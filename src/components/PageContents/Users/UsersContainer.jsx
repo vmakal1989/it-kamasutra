@@ -4,7 +4,7 @@ import React from "react";
 import Users from "./Users";
 import Preloader from "../../common/Preloader/Preloader";
 import s from "./Users.module.css";
-import {Redirect} from "react-router-dom";
+import {AuthRedirect} from "../../../hoc/AuthRendirect";
 
 class usersAPIComponent extends React.Component {
 
@@ -16,7 +16,6 @@ class usersAPIComponent extends React.Component {
     };
 
     render() {
-        if (!this.props.auth) return <Redirect to={'/login'}/>;
         return (
             <>
                 <div className={s.preloader}>
@@ -42,14 +41,13 @@ const mapStateToProps = (state) => {
         pageSize: state.usersPage.pageSize,
         currentPage: state.usersPage.currentPage,
         isFetching: state.usersPage.isFetching,
-        isDisabled: state.usersPage.isDisabled,
-        auth: state.auth.isAuth
+        isDisabled: state.usersPage.isDisabled
     }
 };
 
-const UsersContainer = connect(mapStateToProps,
+const UsersContainer = AuthRedirect(connect(mapStateToProps,
     {follow, unFollow, getUsers,setCurrentPage
-    })(usersAPIComponent);
+    })(usersAPIComponent));
 
 
 export default UsersContainer;

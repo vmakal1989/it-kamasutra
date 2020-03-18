@@ -4,6 +4,7 @@ import React from "react";
 import Users from "./Users";
 import Preloader from "../../common/Preloader/Preloader";
 import s from "./Users.module.css";
+import {Redirect} from "react-router-dom";
 
 class usersAPIComponent extends React.Component {
 
@@ -15,6 +16,7 @@ class usersAPIComponent extends React.Component {
     };
 
     render() {
+        if (!this.props.auth) return <Redirect to={'/login'}/>;
         return (
             <>
                 <div className={s.preloader}>
@@ -40,7 +42,8 @@ const mapStateToProps = (state) => {
         pageSize: state.usersPage.pageSize,
         currentPage: state.usersPage.currentPage,
         isFetching: state.usersPage.isFetching,
-        isDisabled: state.usersPage.isDisabled
+        isDisabled: state.usersPage.isDisabled,
+        auth: state.auth.isAuth
     }
 };
 

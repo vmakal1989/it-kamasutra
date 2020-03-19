@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import PageContents from './components/PageContents/PageContents';
-import Profile from './components/Profile/Profile';
 import {Route} from "react-router-dom";
 import News from "./components/Navbar/News/News";
 import Music from "./components/Navbar/Music/Music";
@@ -12,6 +11,7 @@ import UsersContainer from "./components/PageContents/Users/UsersContainer";
 import  {UserProfileContainer} from './components/PageContents/Users/UserProfile/UserProfileContainer'
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
+import ProfileContainer from "./components/Profile/ProfileContainer";
 
 const App = () => {
     return (
@@ -28,7 +28,7 @@ const App = () => {
                     <Route path='/settings' component={Settings}/>
                     <Route path='/login' component={Login}/>
                 </div>
-                <Profile/>
+                <ProfileContainer />
             </div>
     );
 }

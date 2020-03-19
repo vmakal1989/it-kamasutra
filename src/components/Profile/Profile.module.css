@@ -3,5 +3,23 @@
   background:#424242;
   border-radius: 5px;
   margin-top: 9px;
-  padding: 0 25px 20px;
+}
+
+.image img{
+  padding: 0px 0px 10px 10px;
+  max-width: 300px;
+  max-height: 300px;
+  border-radius: 15px;
+}
+
+.name h1 {
+  text-align: center;
+  color: red;
+  padding: 0px 0px 10px 10px;
+}
+
+.status h5 {
+  text-align: center;
+  color: lightgreen;
+  padding: 0px 0px 10px 10px;
 }

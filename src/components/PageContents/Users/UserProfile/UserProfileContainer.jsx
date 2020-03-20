@@ -2,14 +2,14 @@ import React from 'react';
 import {connect} from "react-redux";
 import UserProfile from "./UserProfile";
 import {withRouter} from "react-router-dom";
-import {getUserProfile} from "../../../../Redux/pageContentsReducers/userProfile-reducer";
+import {getUserProfile, getUserStatus} from "../../../../Redux/pageContentsReducers/userProfile-reducer";
 
 class UserProfileContainerAPI extends React.Component   {
     componentDidMount() {
 
         let userId = this.props.match.params.userId;
-
-        this.props.getUserProfile(userId)
+        this.props.getUserProfile(userId);
+        this.props.getUserStatus(userId);
     }
 
     render () {
@@ -23,11 +23,12 @@ class UserProfileContainerAPI extends React.Component   {
 
 const mapStateToProps = (props) => {
     return {
-        userProfile: props.userProfile.userProfile
+        userProfile: props.userProfile.userProfile,
+        userStatus: props.userProfile.userStatus
     }
 };
 
 
 const WithRouterUserProfileContainerAPI =  withRouter(UserProfileContainerAPI);
 
-export  const UserProfileContainer = connect(mapStateToProps, {getUserProfile} )(WithRouterUserProfileContainerAPI);
+export  const UserProfileContainer = connect(mapStateToProps, {getUserProfile, getUserStatus} )(WithRouterUserProfileContainerAPI);

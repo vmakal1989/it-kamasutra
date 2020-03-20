@@ -18,6 +18,9 @@ const UserProfile = (props) => {
                     </div>
                 </div>
                 <div className={s.twoColomn}>
+                    <div className={s.status}>
+                        <h5>{props.userStatus}</h5>
+                    </div>
                     <div>
                         <div>
                             Обо мне: {u.aboutMe}

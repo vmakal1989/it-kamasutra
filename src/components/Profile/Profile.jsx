@@ -2,7 +2,6 @@ import React from 'react';
 import style from './Profile.module.css';
 
 const Profile = (props) => {
-    debugger
     return (
       <div className={style.menu}>
           <div className={style.status}>

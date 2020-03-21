@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css?family=Red+Hat+Display&display=swap');
+.page {
+    position:relative;
+    width: 770px;
+    height: 770px;
+    background-color: #424242;
+    margin: 10px 0px 25px 25px;
+    border-radius: 5px;
+    padding-top: 5px;
+}
+
+
+/* Rectangle 6 */
+
+.form {
+    position: absolute;
+    width: 433px;
+    height: 279px;
+    left: 168px;
+    top: 53px;
+
+    background: #505050;
+    border-radius: 3px;
+}
+
+/* Sign In */
+
+.signIn {
+    position: absolute;
+    width: 130px;
+    height: 47px;
+    background: #505050;
+    left: 163px;
+    top: 37px;
+    font-family: Red Hat Display;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 34px;
+    line-height: 18px;
+    /* identical to box height, or 51% */
+
+    text-align: center;
+    letter-spacing: 0.25px;
+
+    color: #EEC9C9;
+
+}
+
+.loginInput {
+    position: absolute;
+    max-width: 341px;
+    max-height: 44px;
+    left: 38px;
+    top: 83px;
+
+    background: #C4C4C4;
+    border-radius: 3px;
+    color: #000000;
+    font-family: Red Hat Display;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 18px;
+    padding-left: 9px;
+}
+
+
+.passwordInput {
+    position: absolute;
+    max-width: 341px;
+    max-height: 44px;
+    left: 38px;
+    top: 140px;
+
+    background: #C4C4C4;
+    border-radius: 3px;
+    color: #000000;
+    font-family: Red Hat Display;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 18px;
+    padding-left: 9px;
+}
+
+.button {
+    position: absolute;
+    width: 93px;
+    height: 38px;
+    left: 299px;
+    top: 197px;
+
+    background: #79B792;
+    border-radius: 3px;
+    font-family: Red Hat Display;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 18px;
+    /* identical to box height, or 76% */
+
+    text-align: center;
+    letter-spacing: 0.25px;
+
+    color: #000000;
+
+}
+
+.checkBox {
+    position: absolute;
+    left: 47px;
+    top: 211px;
+}

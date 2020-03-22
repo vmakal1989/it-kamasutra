@@ -27,7 +27,7 @@ export const getUserProfile = (userId) => {
                 dispatch(setUserProfile(data));
             });
     }
-}
+};
 
 export const getUserStatus = (userId) => {
     return (dispatch) => {
@@ -36,7 +36,7 @@ export const getUserStatus = (userId) => {
                 dispatch(setUserStatus(data));
             });
     }
-}
+};
 
 export const setUserProfile = (userProfile) => ({ type: SET_USER_PROFILE, userProfile });
 export const setUserStatus = (status) => ({ type: SET_USER_STATUS, status: status });

@@ -1,6 +1,10 @@
 import React from 'react';
 import style from './Login.module.css'
 import {Field, reduxForm} from "redux-form";
+import {compose} from "redux";
+import {connect} from "react-redux";
+import {Redirect} from "react-router-dom";
+import {sendLoginData} from "../../Redux/login-reducer";
 
 
 const LoginForm =(props) => {
@@ -10,8 +14,8 @@ const LoginForm =(props) => {
                 <div className={style.signIn}>
                     Sign In
                 </div>
-                <Field className={style.loginInput} name={'login'} component={'input'} placeholder={'Login'}/>
-                <Field className={style.passwordInput} name={'password'} component={'input'} placeholder={'Password'}/>
+                <Field className={style.loginInput} name={'email'} component={'input'} placeholder={'Login'}/>
+                <Field className={style.passwordInput} type={'password'} name={'Password'} component={'input'} placeholder={'Password'}/>
                 <div className={style.checkBox}>
                     <Field type={'checkBox'} name={'rememberMe'} component={'input'} /> Remember Me
                 </div>
@@ -26,17 +30,24 @@ const LoginForm =(props) => {
 
 const ReduxFormLogin = reduxForm({form: 'login'})(LoginForm);
 
-const Login = (props) => {
+const LoginContainer = (props) => {
+
     const onSubmit = (formData) => {
-        console.log(formData);
+        props.sendLoginData(formData);
     };
 
     return (
-        <div className={style.page}>
-            <ReduxFormLogin onSubmit={onSubmit}/>
-        </div>
+        props.auth ? <Redirect to={'/'}/> :
+            <div className={style.page}>
+                <ReduxFormLogin onSubmit={onSubmit}/>
+            </div>
     )
 };
 
+const mapStateToProps =(state) => {
+    return {
+        auth: state.auth.isAuth
+    }
+};
 
-export default Login;
+export default compose(connect(mapStateToProps,{sendLoginData}))(LoginContainer);

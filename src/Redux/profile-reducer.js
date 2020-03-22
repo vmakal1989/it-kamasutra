@@ -45,7 +45,6 @@ export const updateProfileStatus = (status) => {
     return (dispatch) => {
         userProfileAPI.updateStatus(status)
             .then(data => {
-                debugger
                 if (data.resultCode === 0) {
                     dispatch(updateStatus(status))
                 }

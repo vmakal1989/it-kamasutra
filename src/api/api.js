@@ -51,3 +51,11 @@ export const userProfileAPI = {
         ).then(data=> data.data)
     }
 };
+
+export const loginAPI =  {
+    getLoginData(loginData) {
+        return (
+            instance.post('/auth/login', loginData)
+        ).then(response => response.data)
+    }
+};

@@ -1,6 +1,7 @@
 import {authAPI} from "../../api/api";
 
 let SET_AUTH_DATA = 'SET_AUTH_DATA';
+let LOGIN_OUT_AUTH = 'LOGIN_OUT_AUTH';
 
 let initialState = {
     userId: null,
@@ -16,6 +17,12 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 ...action.data,
                 isAuth: true
+            };
+        case LOGIN_OUT_AUTH:
+            return {
+                ...state,
+                ...action.data,
+                isAuth: false
             };
         default: {
             return state;
@@ -33,8 +40,11 @@ export const authMe = () => {
                 }
             });
     }
-}
+};
+
 
 export const setAuthData =  (userId, login, email) => ({type: SET_AUTH_DATA, data: {userId, login, email}});
+export const loginOutAuth = () => ({type: LOGIN_OUT_AUTH, data: {userId: null, login: null, email: null}});
+
 
 export default authReducer;

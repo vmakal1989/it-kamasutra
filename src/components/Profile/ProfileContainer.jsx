@@ -14,7 +14,6 @@ const mapStateToProps =(state) => {
 };
 
 class ProfileContainer extends React.Component {
-
     componentDidUpdate(prevProps, prevState) {
         if(prevProps !== this.props) {
             if (prevProps.auth !== this.props.auth) {

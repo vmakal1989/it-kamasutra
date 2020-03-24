@@ -8,7 +8,8 @@ const Header = (props) => {
         <img src="http://weblab.ua/wp-content/uploads/2017/08/react-learning.png"
              alt={"http://weblab.ua/wp-content/uploads/2017/08/react-learning.png"}/>
         <div className={style.authUser}>
-            { !props.isAuth ? <NavLink to={'/login'}>login </NavLink> : props.login}
+            { !props.isAuth ? <NavLink to={'/login'}>login </NavLink>
+                            :  <p className={style.loginOut} onClick={props.loginOut}>sign out</p> }
         </div>
       </header>
     )

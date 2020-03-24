@@ -57,5 +57,10 @@ export const loginAPI =  {
         return (
             instance.post('/auth/login', loginData)
         ).then(response => response.data)
+    },
+    loginOut() {
+        return (
+            instance.delete('/auth/login')
+        ).then(response => response.data)
     }
 };

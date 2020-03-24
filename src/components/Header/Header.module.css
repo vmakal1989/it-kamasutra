@@ -16,3 +16,7 @@
 .authUser a {
   color: white;
 }
+
+.loginOut {
+  cursor: pointer;
+}

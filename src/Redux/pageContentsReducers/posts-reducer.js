@@ -1,5 +1,4 @@
 const ADD_POST = "ADD-POST";
-const UPDATE_NEW_POST_MESSAGE= "UPDATE-NEW-POST-MESSAGE";
 
 let initialState = {
     posts: [
@@ -14,20 +13,12 @@ const postsReducer = (state = initialState, action) => {
         case ADD_POST: {
             let post = {
                 id: 5,
-                message: state.newPostText,
+                message: action.text,
                 likes_counts: 0
             };
             return {
                 ...state,
-                posts: [...state.posts, post],
-                newPostText: ''
-            };
-
-        }
-        case UPDATE_NEW_POST_MESSAGE: {
-            return {
-                ...state,
-                newPostText: action.newText
+                posts: [...state.posts, post]
             };
         }
         default:
@@ -35,8 +26,14 @@ const postsReducer = (state = initialState, action) => {
     }
 };
 
-export const addPost = () => ({type: ADD_POST});
-export const postChange = (newText) => ({type: UPDATE_NEW_POST_MESSAGE,
-                                                               newText: newText});
+export const addNewPost = (data) => {
+    return (dispatch) => {
+       dispatch(addPost(data.text));
+    }
+
+};
+
+export const addPost = (text) => ({type: ADD_POST, text});
+
 
 export default postsReducer;

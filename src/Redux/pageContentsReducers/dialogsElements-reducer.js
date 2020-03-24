@@ -1,5 +1,4 @@
 const ADD_DIALOG_MESSAGE = 'ADD-DIALOG-MESSAGE';
-const UPDATE_NEW_DIALOG_MESSAGE = 'UPDATE-NEW-DIALOG-MESSAGE';
 
 let initialState = {
     dialogs: [
@@ -11,10 +10,7 @@ let initialState = {
         {message: 'Hello My friend!'},
         {message: 'I follow  for my dreams'},
         {message: 'And they will be mine'},
-    ],
-
-    newMessageText: "hello"
-
+    ]
 };
 
 const dialogsElementsReducer = (state = initialState , action) => {
@@ -22,28 +18,25 @@ const dialogsElementsReducer = (state = initialState , action) => {
     switch (action.type) {
         case ADD_DIALOG_MESSAGE: {
             let message = {
-                message: state.newMessageText
+                message: action.text
             };
             return {
                 ...state,
                 messages: [ ...state.messages, message],
-                newMessageText: ''
             };
         }
-        case UPDATE_NEW_DIALOG_MESSAGE: {
-            return {
-                ...state,
-                newMessageText: action.newText
-            };
 
-        }
         default:
             return state;
     }
 };
 
-export const addMessage = () => ({type: ADD_DIALOG_MESSAGE});
-export const changeMessage = (newText) => ({type: UPDATE_NEW_DIALOG_MESSAGE,
-                                                                 newText: newText});
+const addMessage = (text) => ({type: ADD_DIALOG_MESSAGE, text});
+
+export const addNewMessage = (data) => {
+    return (dispatch) => {
+        dispatch(addMessage(data.text))
+    }
+}
 
 export default dialogsElementsReducer;

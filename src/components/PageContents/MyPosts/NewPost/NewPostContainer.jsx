@@ -1,6 +1,7 @@
-import {addPost, postChange} from "../../../../Redux/pageContentsReducers/posts-reducer";
+import {addNewPost} from "../../../../Redux/pageContentsReducers/posts-reducer";
 import NewPost from "./NewPost";
 import {connect} from "react-redux";
+import {compose} from "redux";
 
 const mapStateToProps = (state) => {
     return {
@@ -9,6 +10,4 @@ const mapStateToProps = (state) => {
 };
 
 
-const NewPostContainer = connect(mapStateToProps,{addPost, postChange})(NewPost);
-    
-export default NewPostContainer;
+export default compose(connect(mapStateToProps,{addNewPost})(NewPost));

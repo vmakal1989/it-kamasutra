@@ -5,6 +5,10 @@ import {compose} from "redux";
 import {connect} from "react-redux";
 import {Redirect} from "react-router-dom";
 import {sendLoginData} from "../../Redux/login-reducer";
+import {FormsControls} from "../common/FormsControls/FormControls";
+import {minLength, required} from "../../helpers/validators/validators";
+
+const minLength8 = minLength(8);
 
 
 const LoginForm =(props) => {
@@ -14,10 +18,24 @@ const LoginForm =(props) => {
                 <div className={style.signIn}>
                     Sign In
                 </div>
-                <Field className={style.loginInput} name={'email'} component={'input'} placeholder={'Login'}/>
-                <Field className={style.passwordInput} type={'password'} name={'Password'} component={'input'} placeholder={'Password'}/>
+                <Field className={style.loginInput}
+                       name={'email'}
+                       component={FormsControls}
+                       placeholder={'Login'}
+                       type={'input'}
+                       validate={[required, minLength8]}/>
+                <Field className={style.passwordInput}
+                       type={'password'}
+                       name={'Password'}
+                       type={'input'}
+                       component={FormsControls}
+                       placeholder={'Password'}
+                       validate={[required, minLength8]}/>
                 <div className={style.checkBox}>
-                    <Field type={'checkBox'} name={'rememberMe'} component={'input'} /> Remember Me
+                    <Field type={'checkBox'}
+                           name={'rememberMe'}
+                           component={'input'} />
+                           Remember Me
                 </div>
                 <button className={style.button}>
                     Sign In

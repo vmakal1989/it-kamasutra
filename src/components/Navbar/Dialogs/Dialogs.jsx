@@ -3,6 +3,12 @@ import style from './Dialogs.module.css';
 import DialogUser from "./DialogUser/Dialog";
 import MessagesUser from "./MessagesUser/Message";
 import {Field, reduxForm, reset} from "redux-form";
+import {FormsControls, Textarea} from "../../common/FormsControls/FormControls";
+import {maxLength, minLength, required} from "../../../helpers/validators/validators";
+
+const maxLength15 = maxLength(15);
+const minLength2 = minLength(2);
+
 const Dialogs = (props) => {
 
     let dialogsElement = props.dialogsElements.dialogs.map( d => <DialogUser name={d.name} id={d.id} /> );
@@ -32,7 +38,10 @@ const DialogsForm = (props) => {
         <form onSubmit={props.handleSubmit}>
             <div className={style.sendMessage}>
                 <div>
-                    <Field name={'text'} component={'textarea'}/>
+                    <Field name={'textarea'}
+                           component={FormsControls}
+                           type={'textarea'}
+                           validate={[required, maxLength15,minLength2]}/>
                 </div>
                 <div>
                     <button onClick={props.onSubmit}>Send</button>

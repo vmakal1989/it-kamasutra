@@ -1,0 +1,7 @@
+.inputField textarea,
+.inputField input {
+    border: 2px solid red;
+}
+.inputField span {
+    color: red;
+}

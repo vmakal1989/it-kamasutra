@@ -1,6 +1,7 @@
 import {authAPI, loginAPI} from "../api/api";
 import {loginOutAuth, setAuthData} from "./headerReducers/auth-reducer";
 import {setProfile, updateStatus} from "./profile-reducer";
+import {stopSubmit} from "redux-form";
 
 let SET_LOGIN_DATE = 'SET_LOGIN_DATE';
 
@@ -30,6 +31,9 @@ export const sendLoginData = (loginData) => {
                                 dispatch(setLoginDate(data));
                             }
                         });
+                } else {
+                    let message = data.messages.length > 0 ? data.messages[0] : "Some error";
+                    dispatch(stopSubmit('login', {_error: message}))
                 }
             })
     }

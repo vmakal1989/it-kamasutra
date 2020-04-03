@@ -111,3 +111,12 @@
     left: 47px;
     top: 211px;
 }
+
+.errorMessage {
+    position: absolute;
+    left: 30px;
+    top: 220px;
+    color: red;
+    padding: 10px;
+    font-size:30px;
+}

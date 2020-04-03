@@ -22,12 +22,12 @@ const LoginForm =(props) => {
                        name={'email'}
                        component={FormsControls}
                        placeholder={'Login'}
-                       type={'input'}
+                       typeForm={'input'}
                        validate={[required, minLength8]}/>
                 <Field className={style.passwordInput}
                        type={'password'}
                        name={'Password'}
-                       type={'input'}
+                       typeForm={'input'}
                        component={FormsControls}
                        placeholder={'Password'}
                        validate={[required, minLength8]}/>
@@ -40,6 +40,11 @@ const LoginForm =(props) => {
                 <button className={style.button}>
                     Sign In
                 </button>
+                {props.error &&
+                    <div className={style.errorMessage}>
+                        {props.error}
+                    </div>
+                }
             </div>
         </form>
     )

@@ -1,4 +1,4 @@
-import {authAPI} from "../../api/api";
+import {authAPI} from "../api/api";
 
 let SET_AUTH_DATA = 'SET_AUTH_DATA';
 let LOGIN_OUT_AUTH = 'LOGIN_OUT_AUTH';
@@ -32,7 +32,7 @@ const authReducer = (state = initialState, action) => {
 
 export const authMe = () => {
     return (dispatch) => {
-        authAPI.authME()
+        return authAPI.authME()
             .then(data => {
                 if(data.resultCode === 0) {
                     let {id, login, email} = data.data;

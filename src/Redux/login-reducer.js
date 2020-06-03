@@ -1,5 +1,5 @@
 import {authAPI, loginAPI} from "../api/api";
-import {loginOutAuth, setAuthData} from "./headerReducers/auth-reducer";
+import {loginOutAuth, setAuthData} from "./auth-reducer";
 import {setProfile, updateStatus} from "./profile-reducer";
 import {stopSubmit} from "redux-form";
 

@@ -5,10 +5,11 @@ import topFriendsReducer from "./topFriends-reducer";
 import loginReducer from "./login-reducer";
 import usersReducer from "./pageContentsReducers/users-reducer";
 import userProfileReducer from "./pageContentsReducers/userProfile-reducer";
-import authReducer from "./headerReducers/auth-reducer";
+import authReducer from "./auth-reducer";
 import thunkMiddleware from 'redux-thunk';
 import profileReducer from "./profile-reducer";
 import { reducer as formReducer } from 'redux-form'
+import appReducer from "./app-reducer";
 
 let reducers = combineReducers({
     pageContents: postsReducer,
@@ -19,7 +20,8 @@ let reducers = combineReducers({
     login: loginReducer,
     auth: authReducer,
     profile: profileReducer,
-    form: formReducer
+    form: formReducer,
+    app: appReducer
 
 });
 

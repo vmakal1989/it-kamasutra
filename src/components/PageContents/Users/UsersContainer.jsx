@@ -1,11 +1,17 @@
 import {connect} from "react-redux";
-import { follow, getUsers, setCurrentPage, unFollow } from "../../../Redux/pageContentsReducers/users-reducer";
+import { follow, requestUsers, setCurrentPage, unFollow } from "../../../Redux/pageContentsReducers/users-reducer";
 import React from "react";
 import Users from "./Users";
 import Preloader from "../../common/Preloader/Preloader";
 import s from "./Users.module.css";
 import {AuthRedirect} from "../../../hoc/AuthRendirect";
 import {compose} from "redux";
+import {
+    getCurrentPage, getIsDisabled,
+    getIsFetching,
+    getPageSize,
+    getTotalCount, getUsers
+} from "../../../Redux/pageContentsReducers/users-selectors";
 
 class usersAPIComponent extends React.Component {
 
@@ -24,7 +30,7 @@ class usersAPIComponent extends React.Component {
                 </div>
             <Users totalCount={this.props.totalCount}
                           pageSize={this.props.pageSize}
-                          currentPage={this.props.setCurrentPage}
+                          currentPage={this.props.currentPage}
                           users={this.props.users}
                           onPageChange={this.onPageChange}
                           follow={this.props.follow}
@@ -37,16 +43,17 @@ class usersAPIComponent extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        users: state.usersPage.users,
-        totalCount: state.usersPage.totalCount,
-        pageSize: state.usersPage.pageSize,
-        currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching,
-        isDisabled: state.usersPage.isDisabled
+        users: getUsers(state),
+        totalCount: getTotalCount(state),
+        pageSize: getPageSize(state),
+        currentPage: getCurrentPage(state),
+        isFetching: getIsFetching(state),
+        isDisabled: getIsDisabled(state)
     }
+
 };
 
 export default compose(
     AuthRedirect,
-    connect(mapStateToProps, {follow, unFollow, getUsers,setCurrentPage}))
+    connect(mapStateToProps, {follow, unFollow, getUsers: requestUsers,setCurrentPage}))
     (usersAPIComponent)

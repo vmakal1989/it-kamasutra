@@ -10,7 +10,6 @@ const Users = (props) => {
     for(let i = 1; pagesCount >= i; i++) {
         pages.push(i);
     }
-
     return (
         <div className={s.page}>
             <div className={s.pageNumbers}>

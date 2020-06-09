@@ -31,4 +31,4 @@ const mapStateToProps = (props) => {
 
 const WithRouterUserProfileContainerAPI =  withRouter(UserProfileContainerAPI);
 
-export  const UserProfileContainer = connect(mapStateToProps, {getUserProfile, getUserStatus} )(WithRouterUserProfileContainerAPI);
+export const UserProfileContainer = connect(mapStateToProps, {getUserProfile, getUserStatus} )(WithRouterUserProfileContainerAPI);

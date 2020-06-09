@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Profile from "./Profile";
 import {compose} from "redux";
 import {connect} from "react-redux";
@@ -13,58 +13,33 @@ const mapStateToProps =(state) => {
     }
 };
 
-class ProfileContainer extends React.Component {
-    componentDidUpdate(prevProps, prevState) {
-        if(prevProps !== this.props) {
-            if (prevProps.auth !== this.props.auth) {
-                this.props.getProfile(this.props.auth.userId);
-            }
-            if(prevProps.profileStatus !== this.profileStatus) {
-                this.props.getProfileStatus(this.props.auth.userId);
-                this.setState({
-                    status: this.props.profileStatus
-                })
-            }
-        }
-    }
+const ProfileContainer =(props) => {
 
-    state = {
-        editMode: false,
-        status: this.props.profileStatus
+    let [editMode, setEditMode] = useState(false);
+    let [status, setStatus] = useState(props.profileStatus);
+
+    const activateEditMode = () => {
+        setEditMode(true);
     };
 
-    activateEditMode = () => {
-        this.setState({
-            editMode: true
-        })
+    const deActivateEditMode = () => {
+        setEditMode(false);
+        //props.updateProfileStatus(status);
     };
 
-    deActivateEditMode = () => {
-        this.setState({
-            editMode: false,
-        });
-        if(this.state.status != this.props.profileStatus) {
-            this.props.updateProfileStatus(this.state.status)
-        }
+    const onChangeStatus = (e) => {
+        setStatus(e.target.value);
     };
 
-    onChangeStatus = (e) => {
-        this.setState({
-            status: e.target.value
-        })
-    };
+return (
+    <Profile {...props}
+             status = {status}
+             editMode = {editMode}
+             activateEditMode={activateEditMode}
+             deActivateEditMode={deActivateEditMode}
+             onChangeStatus={onChangeStatus}/>
+ )};
 
-    render () {
-        return (
-            <Profile {...this.props}
-                     editMode={this.state.editMode}
-                     status={this.state.status}
-                     activateEditMode={this.activateEditMode}
-                     deActivateEditMode={this.deActivateEditMode}
-                     onChangeStatus={this.onChangeStatus}/>
-        )
-    }
-};
 
 
 export default compose(connect(mapStateToProps,{getProfile, getProfileStatus, updateProfileStatus}))(ProfileContainer);

@@ -11,15 +11,16 @@ import UsersContainer from "./components/PageContents/Users/UsersContainer";
 import  {UserProfileContainer} from './components/PageContents/Users/UserProfile/UserProfileContainer'
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
-import ProfileContainer from "./components/Profile/ProfileContainer";
 import {connect} from "react-redux";
 import {compose} from "redux";
 import {initializeApp} from "./Redux/app-reducer";
 import Preloader from "./components/common/Preloader/Preloader";
+import ProfileContainer from "./components/Profile/ProfileContainer";
 
 class App extends Component {
     componentDidMount() {
         this.props.initializeApp()
+
     }
     render() {
         if(!this.props.initialized) {
@@ -51,5 +52,5 @@ let mapStateToProps = (state) => ({
 });
 
 export default compose( withRouter,
-                        connect( mapStateToProps,{initializeApp})
+                        connect( mapStateToProps,{initializeApp, })
                       )(App);

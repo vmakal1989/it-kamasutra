@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import Profile from "./Profile";
 import {compose} from "redux";
 import {connect} from "react-redux";
@@ -17,6 +17,10 @@ const ProfileContainer =(props) => {
 
     let [editMode, setEditMode] = useState(false);
     let [status, setStatus] = useState(props.profileStatus);
+
+    useEffect( () => {
+        setStatus(props.profileStatus);
+    }, [props.profileStatus]);
 
     const activateEditMode = () => {
         setEditMode(true);

@@ -1,4 +1,5 @@
 const ADD_POST = "ADD-POST";
+const DELETE_POST = "DELETE_POST";
 
 let initialState = {
     posts: [
@@ -21,6 +22,9 @@ const postsReducer = (state = initialState, action) => {
                 posts: [...state.posts, post]
             };
         }
+        case DELETE_POST: {
+            return {...state, posts: state.posts.filter(p =>  p.id != action.postId)};
+        }
         default:
             return state;
     }
@@ -34,6 +38,7 @@ export const addNewPost = (data) => {
 };
 
 export const addPost = (text) => ({type: ADD_POST, text});
+export const deletePost = (postId) => ({type: DELETE_POST, postId});
 
 
 export default postsReducer;

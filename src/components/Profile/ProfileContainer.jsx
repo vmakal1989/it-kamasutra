@@ -14,7 +14,6 @@ const mapStateToProps =(state) => {
 };
 
 const ProfileContainer =(props) => {
-
     let [editMode, setEditMode] = useState(false);
     let [status, setStatus] = useState(props.profileStatus);
 

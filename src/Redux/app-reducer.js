@@ -1,6 +1,6 @@
 import {authMe} from "./auth-reducer";
 
-let INITIALIZED_SUCCESS = 'INITIALIZED_SUCCESS';
+let INITIALIZED_SUCCESS = 'APP/INITIALIZED_SUCCESS';
 
 let initialState = {
     initialized: false

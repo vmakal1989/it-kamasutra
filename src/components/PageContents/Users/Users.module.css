@@ -59,14 +59,6 @@
     grid-area: city;
     text-align: center;
 }
-
-.currentPage{
-    font-weight: bold;
-}
-
-.pageNumbers span {
-    cursor: pointer;
-}
 .preloader {
     position: absolute;
     overflow: visible;

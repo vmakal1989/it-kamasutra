@@ -1,8 +1,8 @@
 import {authAPI} from "../api/api";
 import {getProfile, getProfileStatus} from "./profile-reducer";
 
-let SET_AUTH_DATA = 'SET_AUTH_DATA';
-let LOGIN_OUT_AUTH = 'LOGIN_OUT_AUTH';
+let SET_AUTH_DATA = 'AUTH/SET_AUTH_DATA';
+let LOGIN_OUT_AUTH = 'AUTH/LOGIN_OUT_AUTH';
 
 let initialState = {
     userId: null,
@@ -32,17 +32,15 @@ const authReducer = (state = initialState, action) => {
 };
 
 export const authMe = () => {
-    return (dispatch) => {
-        return authAPI.authME()
-            .then(data => {
-                if(data.resultCode === 0) {
-                    let {id, login, email} = data.data;
-                    dispatch(setAuthData(id, login, email));
-                    dispatch(getProfileStatus(id));
-                    dispatch(getProfile(id));
-                }
-            });
-    }
+    return async (dispatch) => {
+         let data = await authAPI.authME();
+            if(data.resultCode === 0) {
+                let {id, login, email} = data.data;
+                dispatch(setAuthData(id, login, email));
+                dispatch(getProfileStatus(id));
+                dispatch(getProfile(id));
+            }
+        };
 };
 
 

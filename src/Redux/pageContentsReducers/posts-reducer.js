@@ -1,5 +1,5 @@
-const ADD_POST = "ADD-POST";
-const DELETE_POST = "DELETE_POST";
+const ADD_POST = "POSTS/ADD-POST";
+const DELETE_POST = "POSTS/DELETE_POST";
 
 let initialState = {
     posts: [

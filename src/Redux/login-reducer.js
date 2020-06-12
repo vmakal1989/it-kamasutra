@@ -3,7 +3,7 @@ import {loginOutAuth, setAuthData} from "./auth-reducer";
 import {setProfile, updateStatus} from "./profile-reducer";
 import {stopSubmit} from "redux-form";
 
-let SET_LOGIN_DATE = 'SET_LOGIN_DATE';
+let SET_LOGIN_DATE = 'LOGIN/SET_LOGIN_DATE';
 
 let initialState = {
     loginDate: {}
@@ -19,38 +19,33 @@ const loginReducer = (state = initialState, action) => {
 };
 
 export const sendLoginData = (loginData) => {
-    return (dispatch) => {
-        loginAPI.getLoginData(loginData)
-            .then(data => {
+    return async (dispatch) => {
+        let data = await loginAPI.getLoginData(loginData);
                 if (data.resultCode === 0 ) {
-                    authAPI.authME()
-                        .then(data => {
-                            if(data.resultCode === 0) {
-                                let {id, login, email} = data.data;
-                                dispatch(setAuthData(id, login, email));
-                                dispatch(setLoginDate(data));
-                            }
-                        });
-                } else {
+                    let data = await authAPI.authME();
+                        if(data.resultCode === 0) {
+                            let {id, login, email} = data.data;
+                            dispatch(setAuthData(id, login, email));
+                            dispatch(setLoginDate(data));
+                        }
+                    }
+                 else {
                     let message = data.messages.length > 0 ? data.messages[0] : "Some error";
                     dispatch(stopSubmit('login', {_error: message}))
                 }
-            })
-    }
+            }
 };
 
 export const loginOut = () => {
-    return (dispatch) => {
-        loginAPI.loginOut()
-            .then(data => {
-                if(data.resultCode === 0) {
-                    dispatch(loginOutAuth());
-                    dispatch(setProfile(null));
-                    dispatch(updateStatus( 'No status'));
+    return async (dispatch) => {
+        let data = await loginAPI.loginOut()
+            if(data.resultCode === 0) {
+                dispatch(loginOutAuth());
+                dispatch(setProfile(null));
+                dispatch(updateStatus( 'No status'));
 
-                }
-            })
-    }
+            }
+        }
 };
 
 const setLoginDate = (loginDate) => ({type: SET_LOGIN_DATE, loginDate});

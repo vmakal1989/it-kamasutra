@@ -1,4 +1,4 @@
-const ADD_DIALOG_MESSAGE = 'ADD-DIALOG-MESSAGE';
+const ADD_DIALOG_MESSAGE = 'DIALOGS_ELEMENTS/ADD-DIALOG-MESSAGE';
 
 let initialState = {
     dialogs: [
@@ -14,7 +14,6 @@ let initialState = {
 };
 
 const dialogsElementsReducer = (state = initialState , action) => {
-
     switch (action.type) {
         case ADD_DIALOG_MESSAGE: {
             let message = {
@@ -35,8 +34,8 @@ const addMessage = (text) => ({type: ADD_DIALOG_MESSAGE, text});
 
 export const addNewMessage = (data) => {
     return (dispatch) => {
-        dispatch(addMessage(data.text))
+        dispatch(addMessage(data.textarea))
     }
-}
+};
 
 export default dialogsElementsReducer;

@@ -1,7 +1,7 @@
 import {userProfileAPI} from "../../api/api";
 
-let SET_USER_PROFILE = 'SET_USER_PROFILE';
-let SET_USER_STATUS = 'SET_USER_STATUS';
+let SET_USER_PROFILE = 'USER_PROFILE/SET_USER_PROFILE';
+let SET_USER_STATUS = 'USER_PROFILE/SET_USER_STATUS';
 
 let initialState = {
     userProfile: null,
@@ -21,20 +21,17 @@ const userProfileReducer = (state = initialState, action) => {
 };
 
 export const getUserProfile = (userId) => {
-    return (dispatch) => {
-        userProfileAPI.getUserProfile(userId)
-            .then(data => {
-                dispatch(setUserProfile(data));
-            });
+    return async (dispatch) => {
+        let data = await userProfileAPI.getUserProfile(userId);
+        dispatch(setUserProfile(data));
     }
 };
 
+
 export const getUserStatus = (userId) => {
-    return (dispatch) => {
-        userProfileAPI.getUserStatus(userId)
-            .then(data => {
-                dispatch(setUserStatus(data));
-            });
+    return  async (dispatch) => {
+        let data = await userProfileAPI.getUserStatus(userId);
+        dispatch(setUserStatus(data));
     }
 };
 

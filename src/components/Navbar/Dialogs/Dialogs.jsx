@@ -44,7 +44,7 @@ const DialogsForm = (props) => {
                            validate={[required, maxLength15,minLength2]}/>
                 </div>
                 <div>
-                    <button onClick={props.onSubmit}>Send</button>
+                    <button>Send</button>
                 </div>
             </div>
         </form>

@@ -4,7 +4,6 @@ import {NavLink} from "react-router-dom";
 import defaultAvatar from "../../../assets/image/user.png";
 
 const User = (user) => {
-    debugger
     return (
         <div key={user.id} className={s.userBlock}>
             <NavLink to={'/users/' +  user.id}>

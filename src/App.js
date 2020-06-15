@@ -1,13 +1,11 @@
-import React, {Component} from 'react';
+import React, {Component, Suspense} from 'react';
 import './App.css';
 import PageContents from './components/PageContents/PageContents';
 import {BrowserRouter, Route, withRouter} from "react-router-dom";
 import News from "./components/Navbar/News/News";
 import Music from "./components/Navbar/Music/Music";
 import Settings from "./components/Navbar/Settings/Settings";
-import DialogsContainer from "./components/Navbar/Dialogs/DialogsContainer";
 import NavbarContainer from "./components/Navbar/NavbarContainer";
-import UsersContainer from "./components/PageContents/Users/UsersContainer";
 import  {UserProfileContainer} from './components/PageContents/Users/UserProfile/UserProfileContainer'
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
@@ -17,6 +15,9 @@ import {initializeApp} from "./Redux/app-reducer";
 import Preloader from "./components/common/Preloader/Preloader";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import store from "./Redux/storeRedux";
+
+const DialogsContainer = React.lazy(() => import("./components/Navbar/Dialogs/DialogsContainer"));
+const UsersContainer = React.lazy(() => import("./components/PageContents/Users/UsersContainer"));
 
 class App extends Component {
     componentDidMount() {
@@ -32,10 +33,12 @@ class App extends Component {
                 <HeaderContainer/>
                 <NavbarContainer/>
                 <div>
+                    <Suspense fallback={<div><Preloader/></div>}>
+                        <Route path='/users' exact render={() => <UsersContainer/>}/>
+                        <Route path='/dialogs' render={() => <DialogsContainer/>}/>
+                    </Suspense>
                     <Route path='/' exact render={() => <PageContents/>}/>
-                    <Route path='/users' exact render={() => <UsersContainer/>}/>
                     <Route path='/users/:userId' render={() => <UserProfileContainer/>}/>
-                    <Route path='/dialogs' render={() => <DialogsContainer/>}/>
                     <Route path='/news' component={News}/>
                     <Route path='/music' component={Music}/>
                     <Route path='/settings' component={Settings}/>

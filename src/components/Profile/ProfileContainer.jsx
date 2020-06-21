@@ -9,7 +9,8 @@ const mapStateToProps =(state) => {
     return {
         auth: state.auth,
         profile: state.profile.profile,
-        profileStatus: state.profile.profileStatus
+        profileStatus: state.profile.profileStatus,
+        profilePreloaderStatus: state.profile.profilePreloaderStatus
     }
 };
 

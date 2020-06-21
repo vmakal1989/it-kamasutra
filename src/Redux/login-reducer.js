@@ -1,6 +1,6 @@
 import {authAPI, loginAPI} from "../api/api";
 import {loginOutAuth, setAuthData} from "./auth-reducer";
-import {setProfile, updateStatus} from "./profile-reducer";
+import {getProfile, getProfileStatus, setProfile, updateStatus} from "./profile-reducer";
 import {stopSubmit} from "redux-form";
 
 let SET_LOGIN_DATE = 'LOGIN/SET_LOGIN_DATE';
@@ -25,6 +25,8 @@ export const sendLoginData = (loginData) => {
                     let data = await authAPI.authME();
                         if(data.resultCode === 0) {
                             let {id, login, email} = data.data;
+                            dispatch(getProfile(id));
+                            dispatch(getProfileStatus(id));
                             dispatch(setAuthData(id, login, email));
                             dispatch(setLoginDate(data));
                         }
@@ -38,7 +40,7 @@ export const sendLoginData = (loginData) => {
 
 export const loginOut = () => {
     return async (dispatch) => {
-        let data = await loginAPI.loginOut()
+        let data = await loginAPI.loginOut();
             if(data.resultCode === 0) {
                 dispatch(loginOutAuth());
                 dispatch(setProfile(null));

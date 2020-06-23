@@ -2,7 +2,7 @@ import React, { useState, useEffect} from 'react';
 import Profile from "./Profile";
 import {compose} from "redux";
 import {connect} from "react-redux";
-import {getProfile, getProfileStatus, updateProfileStatus} from "../../Redux/profile-reducer";
+import {getProfile, getProfileStatus, updateProfileStatus, addPhotoFile} from "../../Redux/profile-reducer";
 
 const mapStateToProps =(state) => {
 
@@ -35,6 +35,7 @@ const ProfileContainer =(props) => {
         setStatus(e.target.value);
     };
 
+
 return (
     <Profile {...props}
              status = {status}
@@ -46,4 +47,4 @@ return (
 
 
 
-export default compose(connect(mapStateToProps,{getProfile, getProfileStatus, updateProfileStatus}))(ProfileContainer);
+export default compose(connect(mapStateToProps,{getProfile, getProfileStatus, updateProfileStatus, addPhotoFile}))(ProfileContainer);

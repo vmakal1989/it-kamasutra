@@ -5,25 +5,37 @@
   margin-top: 9px;
 }
 
-.image img{
-  padding: 0px 0px 10px 10px;
-  max-width: 300px;
-  max-height: 300px;
-  border-radius: 15px;
+.menu img {
+  cursor: pointer;
 }
 
-.name h1 {
+.image img{
+  width: 200px;
+  height: 200px;
+  border-radius: 15px;
   text-align: center;
-  color: red;
-  padding: 0px 0px 10px 10px;
+  margin-left:60px;
+}
+
+.name h3 {
+  padding-left: 10px;
+  color: white;
+  text-align: center;
 }
 
 .status h5 {
   text-align: center;
   color: lightgreen;
-  padding: 0px 0px 10px 10px;
 }
 
 .preloader {
   margin-left: 55px;
+}
+
+.contact {
+  padding-left: 10px;
+}
+
+.profileInfo {
+  padding-left: 10px;
 }

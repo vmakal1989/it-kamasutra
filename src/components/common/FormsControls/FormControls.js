@@ -22,5 +22,6 @@ export const createField = (className,name,component,placeholder,typeForm,valida
            component={component}
            placeholder={placeholder}
            typeForm={typeForm}
-           validate={validate}/>
-)
+           validate={validate}
+           />
+);

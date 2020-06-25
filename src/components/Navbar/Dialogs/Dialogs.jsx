@@ -10,7 +10,6 @@ const maxLength15 = maxLength(15);
 const minLength2 = minLength(2);
 
 const Dialogs = (props) => {
-
     let dialogsElement = props.dialogsElements.dialogs.map( d => <DialogUser key={d.id} name={d.name} id={d.id} /> );
     let messagesElement = props.dialogsElements.messages.map( m => <MessagesUser key={m.id}  messages={m.message} />);
 

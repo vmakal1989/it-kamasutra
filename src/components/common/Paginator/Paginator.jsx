@@ -20,7 +20,7 @@ const Paginator = ({currentPage,onPageChange,totalCount,pageSize,portionSize = 1
         {pages
             .filter( p => p >= leftPortion && p <= rightPortion)
             .map( (p) =>
-                <span key={p.toString()}  className={currentPage === p && s.currentPage }
+                <span key={p.toString()}  className={currentPage === p && s.currentPage ? s.currentPage : 0 }
                       onClick = { () => {onPageChange(p)} }>{p + ' '}</span>
             )}
             {portionCount > currentPortion &&

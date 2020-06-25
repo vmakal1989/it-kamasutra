@@ -17,14 +17,14 @@ const dialogsElementsReducer = (state = initialState , action) => {
     switch (action.type) {
         case ADD_DIALOG_MESSAGE: {
             let message = {
+                id: state.messages.length + 1,
                 message: action.text
             };
             return {
                 ...state,
-                messages: [ ...state.messages, message],
+                messages: [ ...state.messages, message ],
             };
         }
-
         default:
             return state;
     }

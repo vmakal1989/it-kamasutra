@@ -22,7 +22,7 @@ const ProfileInfoForm = ({profile, setProfileEditMode, handleSubmit}) => {
                         'textarea',[],null)}
                     </div>
                     <div >
-                        <b>Contacts: </b>{Object.keys(profile.contacts).map(key => <Contact contactName={key}
+                        <b>Contacts: </b>{Object.keys(profile.contacts).map(key => <Contact key={key} contactName={key}
                                                                                     contactLink={
                                         createField(null,key,FormsControls,null,
                                                     'input',[],null, profile.contacts[key])}/>)}

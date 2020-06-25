@@ -4,7 +4,7 @@ import {Field} from "redux-form";
 
 export const FormsControls = ({input, meta:{error,touched}, typeForm, ...props}) => {
     return (
-        <div className={error && touched && style.inputField} >
+        <div className={error && touched ? style.inputField : 0} >
             <div>
                 {typeForm === 'input' ? <input {...input} {...props}/> : <textarea {...input} {...props}/>}
             </div>

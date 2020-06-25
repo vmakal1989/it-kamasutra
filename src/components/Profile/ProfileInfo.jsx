@@ -16,7 +16,7 @@ const ProfileInfo = ({profile,setProfileEditMode}) => {
                     <b>Skills: </b>{profile.lookingForAJobDescription}
                 </div>
                 <div >
-                    <b>Contacts: </b>{Object.keys(profile.contacts).map(key => <Contact contactName={key}
+                    <b>Contacts: </b>{Object.keys(profile.contacts).map(key => <Contact key={key} contactName={key}
                                                                                         contactLink={profile.contacts[key]}/>)}
                 </div>
             </div>

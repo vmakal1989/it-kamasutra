@@ -7,7 +7,7 @@ const Users = (props) => {
     return (
         <div className={s.page}>
             <Paginator {...props}/>
-            { props.users.map( u => <User {...u} isDisabled={props.isDisabled} unFollow={props.unFollow}
+            { props.users.map( u => <User key={u.id} {...u} isDisabled={props.isDisabled} unFollow={props.unFollow}
                                           follow={props.follow}/>)}
         </div>
     )

@@ -2,14 +2,14 @@ const ADD_DIALOG_MESSAGE = 'DIALOGS_ELEMENTS/ADD-DIALOG-MESSAGE';
 
 let initialState = {
     dialogs: [
-        {name: 'Vitali', id: '1'},
-        {name: 'Slava', id: '2'},
-        {name: 'Valera', id: '3'}
+        {id: '1', name: 'Vitali'},
+        {id: '2', name: 'Slava'},
+        {id: '3', name: 'Valera'}
     ],
     messages: [
-        {message: 'Hello My friend!'},
-        {message: 'I follow  for my dreams'},
-        {message: 'And they will be mine'},
+        {id: '1', message: 'Hello My friend!'},
+        {id: '2', message: 'I follow  for my dreams'},
+        {id: '3', message: 'And they will be mine'},
     ]
 };
 

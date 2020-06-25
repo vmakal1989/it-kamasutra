@@ -43,7 +43,7 @@ const usersReducer = (state = initialState, action) => {
         case TOGGLE_IS_DISABLED:
             return { ...state,
                 isDisabled: action.isDisabled ? [...state.isDisabled, action.userID]
-                                              : [...state.isDisabled.filter(id => id != action.userID)]
+                                              : [...state.isDisabled.filter(id => id !== action.userID)]
             };
         default:
             return state;

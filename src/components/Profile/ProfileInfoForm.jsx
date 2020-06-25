@@ -4,7 +4,7 @@ import {reduxForm} from "redux-form";
 import {createField, FormsControls} from "../common/FormsControls/FormControls";
 import Contact from "./Contact";
 
-const ProfileInfoForm = ({profile, setProfileEditMode, handleSubmit }) => {
+const ProfileInfoForm = ({profile, setProfileEditMode, handleSubmit}) => {
     return (
         <div>
             <form onSubmit={handleSubmit}>
@@ -38,6 +38,6 @@ const ProfileInfoForm = ({profile, setProfileEditMode, handleSubmit }) => {
 };
 
 
-const ReduxFormProfileInfo = reduxForm({form: 'profileInfo'})(ProfileInfoForm);
+const ProfileInfoReduxForm = reduxForm({form: 'profileInfo'})(ProfileInfoForm);
 
-export default ReduxFormProfileInfo;
+export default ProfileInfoReduxForm;

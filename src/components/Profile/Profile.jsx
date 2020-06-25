@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import s from './Profile.module.css';
 import Preloader from "../common/Preloader/Preloader";
 import ProfileInfo from "./ProfileInfo";
-import ReduxFormProfileInfo from "./ProfileInfoForm";
+import ProfileInfoReduxForm from "./ProfileInfoForm";
 
 const Profile = ({activateEditMode,deActivateEditMode ,onChangeStatus, profile, editMode, status,
                  profilePreloaderStatus, addPhotoFile}) => {
@@ -46,10 +46,10 @@ const Profile = ({activateEditMode,deActivateEditMode ,onChangeStatus, profile, 
                       }
                   </div>
                   <div className={s.image} >
-                      <img src={profile.photos.large} onClick={()=>{setCurrentWindow( 1)}}/>
+                      <img alt={'unfefined'} src={profile.photos.large} onClick={()=>{setCurrentWindow( 1)}}/>
                   </div>
                   {!profileEditMode && <ProfileInfo profile={profile} setProfileEditMode={setProfileEditMode}/>}
-                  {profileEditMode && <ReduxFormProfileInfo initialValues={profile} profile={profile}
+                  {profileEditMode && <ProfileInfoReduxForm initialValues={profile} profile={profile}
                                                             setProfileEditMode={setProfileEditMode}
                                                             onSubmit={onSubmit}/>}
               </div> }

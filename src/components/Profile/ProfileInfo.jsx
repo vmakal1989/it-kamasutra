@@ -10,6 +10,9 @@ const ProfileInfo = ({profile,setProfileEditMode}) => {
             </div>
             <div className={s.profileInfo}>
                 <div >
+                    <b>About Me: </b> {profile.aboutMe}
+                </div>
+                <div >
                     <b>LookingForAJob: </b> {profile.lookingForAJob}
                 </div>
                 <div >
@@ -17,7 +20,7 @@ const ProfileInfo = ({profile,setProfileEditMode}) => {
                 </div>
                 <div >
                     <b>Contacts: </b>{Object.keys(profile.contacts).map(key => <Contact key={key} contactName={key}
-                                                                                        contactLink={profile.contacts[key]}/>)}
+                                                                                        contactLink={profile.contacts['key']}/>)}
                 </div>
             </div>
             <button onClick={()=>{setProfileEditMode(true)}}>edit</button>

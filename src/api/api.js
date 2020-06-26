@@ -61,6 +61,11 @@ export const userProfileAPI = {
                 }
             })
         ).then(data=> data.data)
+    },
+    sendProfileForm(formData) {
+        return (
+            instance.put(`profile`, formData)
+        )
     }
 };
 

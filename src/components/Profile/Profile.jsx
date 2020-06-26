@@ -5,7 +5,7 @@ import ProfileInfo from "./ProfileInfo";
 import ProfileInfoReduxForm from "./ProfileInfoForm";
 
 const Profile = ({activateEditMode,deActivateEditMode ,onChangeStatus, profile, editMode, status,
-                 profilePreloaderStatus, addPhotoFile}) => {
+                 profilePreloaderStatus, addPhotoFile, sendProfileInfoForm}) => {
 
     const photoFile = (e) => {
         if(e.target.files.length) {
@@ -30,7 +30,8 @@ const Profile = ({activateEditMode,deActivateEditMode ,onChangeStatus, profile, 
     }
 
     const onSubmit = (formData) => {
-        console.log(formData);
+        sendProfileInfoForm(formData);
+        setProfileEditMode(false)
     };
 
     return (

@@ -64,6 +64,17 @@ export const addPhotoFile = (file) => {
     }
 };
 
+export const sendProfileInfoForm = (formData) => {
+    return async (dispatch, getState) => {
+        let response = await userProfileAPI.sendProfileForm(formData);
+        let userId = getState().auth.userId;
+        debugger
+        if (response.data.resultCode === 0) {
+            dispatch(getProfile(userId));
+        }
+    }
+};
+
 export const setProfile = (profile) => ({ type: SET_PROFILE, profile });
 export const setProfileStatus = (status) => ({ type: SET_STATUS, status: status });
 export const updateStatus = (status) => ({ type: UPDATE_STATUS, status: status });

@@ -2,7 +2,6 @@ import React from 'react';
 import s from "./Profile.module.css";
 import {reduxForm} from "redux-form";
 import {createField, FormsControls} from "../common/FormsControls/FormControls";
-import Contact from "./Contact";
 
 const ProfileInfoForm = ({profile, setProfileEditMode, handleSubmit}) => {
     return (
@@ -14,7 +13,11 @@ const ProfileInfoForm = ({profile, setProfileEditMode, handleSubmit}) => {
                 </div>
                 <div className={s.profileInfo}>
                     <div>
-                        <b>LookingForAJob:</b> {createField(null,'LookingForAJob',FormsControls,null,
+                        <b>About Me:</b> {createField(null,'aboutMe',FormsControls,null,
+                        'textarea',[],null)}
+                    </div>
+                    <div>
+                        <b>LookingForAJob:</b> {createField(null,'lookingForAJob',FormsControls,null,
                             'input',[],'checkBox')}
                     </div>
                     <div >
@@ -22,13 +25,15 @@ const ProfileInfoForm = ({profile, setProfileEditMode, handleSubmit}) => {
                         'textarea',[],null)}
                     </div>
                     <div >
-                        <b>Contacts: </b>{Object.keys(profile.contacts).map(key => <Contact key={key} contactName={key}
-                                                                                    contactLink={
-                                        createField(null,key,FormsControls,null,
-                                                    'input',[],null, profile.contacts[key])}/>)}
+                        <b>Contacts: </b> {Object.keys(profile.contacts).map(key => {
+                         return <div className={s.contact} key={key}>
+                            <b>{key}: </b> {createField(null,'contacts.'+ key,FormsControls,key,
+                             'input',[],null)}
+                        </div>
+                        })}
                     </div>
                 </div>
-                <button onClick={()=>{setProfileEditMode(false)}}>
+                <button>
                     save
                 </button>
             </form>

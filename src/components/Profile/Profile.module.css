@@ -39,3 +39,8 @@
 .profileInfo {
   padding-left: 10px;
 }
+
+.error {
+  color: red;
+  padding: 5px;
+}

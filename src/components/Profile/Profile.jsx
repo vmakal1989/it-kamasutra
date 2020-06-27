@@ -30,8 +30,7 @@ const Profile = ({activateEditMode,deActivateEditMode ,onChangeStatus, profile, 
     }
 
     const onSubmit = (formData) => {
-        sendProfileInfoForm(formData);
-        setProfileEditMode(false)
+        sendProfileInfoForm(formData, setProfileEditMode);
     };
 
     return (

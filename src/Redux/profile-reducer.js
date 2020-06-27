@@ -1,4 +1,5 @@
 import {userProfileAPI} from "../api/api";
+import {stopSubmit} from "redux-form";
 
 let SET_PROFILE = 'PROFILE/SET_PROFILE';
 let SET_STATUS = 'PROFILE/SET_STATUS';
@@ -64,13 +65,17 @@ export const addPhotoFile = (file) => {
     }
 };
 
-export const sendProfileInfoForm = (formData) => {
+export const sendProfileInfoForm = (formData, setProfileEditMode ) => {
     return async (dispatch, getState) => {
         let response = await userProfileAPI.sendProfileForm(formData);
         let userId = getState().auth.userId;
         debugger
         if (response.data.resultCode === 0) {
             dispatch(getProfile(userId));
+            setProfileEditMode(false);
+        } else {
+            let messages = response.data.messages.length > 0 ? response.data.messages : "Some error";
+            dispatch(stopSubmit('profileInfo', {_error: messages}))
         }
     }
 };

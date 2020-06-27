@@ -3,7 +3,8 @@ import s from "./Profile.module.css";
 import {reduxForm} from "redux-form";
 import {createField, FormsControls} from "../common/FormsControls/FormControls";
 
-const ProfileInfoForm = ({profile, setProfileEditMode, handleSubmit}) => {
+const ProfileInfoForm = ({profile, setProfileEditMode, handleSubmit, error}) => {
+    debugger
     return (
         <div>
             <form onSubmit={handleSubmit}>
@@ -33,6 +34,11 @@ const ProfileInfoForm = ({profile, setProfileEditMode, handleSubmit}) => {
                         })}
                     </div>
                 </div>
+                {error &&
+                <div className={s.error}>
+                    {error.map(e => <b>{e}</b>)}
+                </div>
+                }
                 <button>
                     save
                 </button>

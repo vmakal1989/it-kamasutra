@@ -22,6 +22,16 @@
     background: #505050;
     border-radius: 3px;
 }
+.formWithCaptcha {
+    position: absolute;
+    width: 433px;
+    height: 360px;
+    left: 168px;
+    top: 53px;
+
+    background: #505050;
+    border-radius: 3px;
+}
 
 /* Sign In */
 
@@ -119,4 +129,22 @@
     color: red;
     padding: 10px;
     font-size:30px;
+}
+
+.captcha img {
+    position: absolute;
+    left: 30px;
+    top: 270px;
+    color: red;
+    padding: 10px;
+    font-size:30px;
+    max-width:120px;
+}
+.captchaField {
+    position: absolute;
+    left: 180px;
+    top: 270px;
+    padding: 10px;
+    max-width:120px;
+
 }

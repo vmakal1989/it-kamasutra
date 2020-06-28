@@ -11,10 +11,10 @@ import {minLength, required} from "../../helpers/validators/validators";
 const minLength8 = minLength(8);
 
 
-const LoginForm =({handleSubmit,error}) => {
+const LoginForm =({handleSubmit,error,captchaImageUrl}) => {
     return (
         <form onSubmit={handleSubmit}>
-            <div className={style.form}>
+            <div className={captchaImageUrl ? style.formWithCaptcha : style.form }>
                 <div className={style.signIn}>
                     Sign In
                 </div>
@@ -30,6 +30,17 @@ const LoginForm =({handleSubmit,error}) => {
                 <button className={style.button}>
                     Sign In
                 </button>
+                {captchaImageUrl &&
+                    <div>
+                        <div className={style.captcha}>
+                            <img src={captchaImageUrl}/>
+                        </div>
+                        <div className={style.captchaField}>
+                            {createField('','captcha',FormsControls,'Enter the captcha text',
+                                'input',[],null)}
+                        </div>
+                    </div>
+                }
                 {error &&
                     <div className={style.errorMessage}>
                         {error}
@@ -43,23 +54,24 @@ const LoginForm =({handleSubmit,error}) => {
 
 const ReduxFormLogin = reduxForm({form: 'login'})(LoginForm);
 
-const LoginContainer = (props) => {
+const LoginContainer = ({auth, sendLoginData, captchaImageUrl}) => {
 
     const onSubmit = (formData) => {
-        props.sendLoginData(formData);
+        sendLoginData(formData);
     };
 
     return (
-        props.auth ? <Redirect to={'/'}/> :
+        auth ? <Redirect to={'/'}/> :
             <div className={style.page}>
-                <ReduxFormLogin onSubmit={onSubmit}/>
+                <ReduxFormLogin onSubmit={onSubmit} captchaImageUrl={captchaImageUrl}/>
             </div>
     )
 };
 
 const mapStateToProps =(state) => {
     return {
-        auth: state.auth.isAuth
+        auth: state.auth.isAuth,
+        captchaImageUrl: state.login.captchaImageUrl
     }
 };
 
